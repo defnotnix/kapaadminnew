@@ -1,0 +1,14 @@
+.flower_content {
+  position: absolute;
+
+  top: 20rem;
+  left: 80.5%;
+}
+
+.flower_content_bot {
+  position: absolute;
+
+  bottom: -50rem;
+  right: 90.5%;
+  transform: rotate(180deg);
+}

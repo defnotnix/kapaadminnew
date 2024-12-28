@@ -1,0 +1,45 @@
+.root {
+  position: relative;
+}
+
+.companyBox {
+  height: 80vh;
+  padding-bottom: 3rem;
+  opacity: 0.5;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: em(750px)) {
+    height: 10vh !important;
+  }
+}
+
+.animationOverlay {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  height: 100vh;
+  width: 100vw;
+  background: var(--mantine-color-gray-2);
+  display: flex;
+  justify-content: center;
+  padding-top: calc(28% - 80px);
+}
+
+.loaderCircle {
+  height: 160px;
+  width: 160px;
+  border-radius: 160px;
+  position: absolute;
+  margin-left: -40px;
+}

@@ -1,0 +1,5 @@
+.root {
+  background: var(--color-events-primary-100);
+  min-height: 100vh;
+  transition: 0.5s ease-in-out;
+}

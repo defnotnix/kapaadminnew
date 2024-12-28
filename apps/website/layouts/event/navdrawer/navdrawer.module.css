@@ -1,0 +1,27 @@
+.socials {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+.sociallink {
+  opacity: 0.5;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navlink {
+  opacity: 0.5;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.active {
+  opacity: 1;
+  font-style: italics;
+}

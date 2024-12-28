@@ -1,0 +1,47 @@
+.root {
+  border-bottom: 1px solid var(--mantine-color-gray-3);
+  padding: 0 var(--mantine-spacing-sm);
+}
+
+.tab {
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 600;
+  display: flex;
+  height: 40px;
+  border-bottom: 2px solid #ffffff00;
+  color: var(--mantine-color-gray-6);
+  cursor: pointer;
+  padding-left: var(--mantine-spacing-xs);
+  padding-right: var(--mantine-spacing-xs);
+
+  &:hover {
+    color: var(--mantine-color-dark-9);
+  }
+}
+
+.tabactive {
+  color: var(--mantine-color-dark-9);
+  border-color: var(--mantine-color-brand-5);
+}
+
+.tab_dropdown {
+  font-size: var(--mantine-font-size-xs);
+  font-weight: 600;
+  display: flex;
+  height: 40px;
+  border-left: 2px solid #ffffff00;
+  color: var(--mantine-color-gray-6);
+  cursor: pointer;
+  padding-left: var(--mantine-spacing-xs);
+  padding-right: var(--mantine-spacing-xs);
+
+  &:hover {
+    color: var(--mantine-color-dark-9);
+  }
+}
+
+.tab_dropdown_active {
+  background: var(--mantine-color-brand-0);
+  color: var(--mantine-color-dark-9);
+  border-color: var(--mantine-color-brand-5);
+}

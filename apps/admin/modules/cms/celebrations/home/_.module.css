@@ -1,0 +1,9 @@
+.hovercard {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  border-bottom: 1px solid var(--mantine-color-gray-3);
+
+  &:hover {
+    background: var(--mantine-color-gray-2);
+  }
+}

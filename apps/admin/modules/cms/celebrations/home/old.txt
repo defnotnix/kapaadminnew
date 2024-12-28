@@ -1,0 +1,179 @@
+{
+    label: "Introduction",
+    component: (
+      <FormHandler
+        {...formHeroProps}
+        transformDataOnSubmit={(formdata) => {
+          return {
+            text: JSON.stringify({
+              heading1: formdata.heading1,
+              heading2: formdata.heading2,
+              heading3: formdata.heading3,
+            }),
+          };
+        }}
+        formType="edit"
+        apiSubmit={(_data) => {
+          editRecord(_data, 6);
+        }}
+      >
+        <FormSubmitHandler id={6}>
+          <FormIntro />
+        </FormSubmitHandler>
+      </FormHandler>
+    ),
+  },
+  {
+    label: "Phase",
+    component: (
+      <>
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 7);
+          }}
+        >
+          <FormSubmitHandler id={7}>
+            <Paper bg="gray.0" p="md">
+              <FormElement.SectionTitle
+                isTopElement
+                title="Phase 1 : Pre-Event"
+                description="Pre-Event Details"
+              />
+            </Paper>
+
+            <FormPhase />
+          </FormSubmitHandler>
+        </FormHandler>
+
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 8);
+          }}
+        >
+          <FormSubmitHandler id={8}>
+            <Paper bg="gray.0" p="md">
+              <FormElement.SectionTitle
+                isTopElement
+                title="Phase 2 : During-Event"
+                description="Pre-Event Details"
+              />
+            </Paper>
+            <FormPhase />
+          </FormSubmitHandler>
+        </FormHandler>
+
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 9);
+          }}
+        >
+          <FormSubmitHandler id={9}>
+            <Paper bg="gray.0" p="md">
+              <FormElement.SectionTitle
+                isTopElement
+                title="Phase 3 : Post-Event"
+                description="Pre-Event Details"
+              />
+            </Paper>
+            <FormPhase />
+          </FormSubmitHandler>
+        </FormHandler>
+      </>
+    ),
+  },
+
+  {
+    label: "Approach",
+    component: (
+      <>
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 7);
+          }}
+        >
+          <FormSubmitHandler>
+            <Paper bg="gray.0" p="md">
+              <FormElement.SectionTitle
+                isTopElement
+                title="Section Text-Contents"
+                description="Text Contents Heading/Description"
+              />
+            </Paper>
+
+            <FormApproach />
+          </FormSubmitHandler>
+        </FormHandler>
+
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 8);
+          }}
+        >
+          <FormSubmitHandler>
+            <Paper bg="gray.0" p="md">
+              <FormElement.SectionTitle
+                isTopElement
+                title="Showcase Images"
+                description="Showcase Images in Cards"
+              />
+            </Paper>
+            <FormApproachImage />
+          </FormSubmitHandler>
+        </FormHandler>
+
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 9);
+          }}
+        >
+          <FormSubmitHandler>
+            <FormApproachImage />
+          </FormSubmitHandler>
+        </FormHandler>
+        <FormHandler
+          {...formHeroProps}
+          transformDataOnSubmit={(formdata) => {
+            return formdata;
+          }}
+          formType="edit"
+          apiSubmit={(_data) => {
+            editRecord(_data, 9);
+          }}
+        >
+          <FormSubmitHandler>
+            <FormApproachImage />
+          </FormSubmitHandler>
+        </FormHandler>
+      </>
+    ),
+  },

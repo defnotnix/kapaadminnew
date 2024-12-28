@@ -1,0 +1,10 @@
+.root {
+  background: var(--mantine-color-gray-0);
+}
+
+.nav_root {
+  display: inline-flex;
+  flex-direction: row;
+  height: 100vh;
+  background: var(--mantine-color-dark-9);
+}

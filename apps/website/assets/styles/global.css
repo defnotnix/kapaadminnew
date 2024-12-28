@@ -1,0 +1,515 @@
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=WindSong:wght@400;500&display=swap");
+
+/* FONTS */
+
+@font-face {
+  font-family: "Made Mirage";
+  src: url("../../assets/fonts/MirageThin.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Made Mirage";
+  src: url("../../assets/fonts/MirageRegular.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Made Mirage";
+  src: url("../../assets/fonts/MirageMedium.otf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Made Mirage";
+  src: url("../../assets/fonts/MirageBold.otf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Made Mirage";
+  src: url("../../assets/fonts/MirageBlack.otf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hawkins Park";
+  src: url("../../assets/fonts/HawkinsPark.otf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+:root {
+  /* Classics Celebrations */
+
+  --color-celebrations-primary-50: #fdf3f3;
+  --color-celebrations-primary-100: #fbe5e5;
+  --color-celebrations-primary-200: #f8d0d1;
+  --color-celebrations-primary-300: #f2afb1;
+  --color-celebrations-primary-400: #e98082;
+  --color-celebrations-primary-500: #db585b;
+  --color-celebrations-primary-600: #ba3538;
+  --color-celebrations-primary-700: #a72e31;
+  --color-celebrations-primary-800: #8b292b;
+  --color-celebrations-primary-900: #74282a;
+  --color-celebrations-primary-950: #3e1112;
+
+  --font-celebrations-heading: "Made Mirage", sans-serif;
+
+  /* Classics Events */
+
+  --color-events-primary-50: #f5f8fa;
+  --color-events-primary-100: #eaeff3;
+  --color-events-primary-200: #d2dee5;
+  --color-events-primary-300: #aac1cf;
+  --color-events-primary-400: #7ca1b4;
+  --color-events-primary-500: #5c859b;
+  --color-events-primary-600: #486b81;
+  --color-events-primary-700: #3b5769;
+  --color-events-primary-800: #344a58;
+  --color-events-primary-900: #2f404b;
+  --color-events-primary-950: #1f2932;
+
+  --font-events-heading: "Funnel Display", sans-serif;
+}
+
+body {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+  scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+}
+
+.has_clip {
+  clip-path: polygon(
+    0.06% 10.549%,
+    0.06% 97.861%,
+    0.06% 97.861%,
+    0.076% 98.171%,
+    0.121% 98.464%,
+    0.193% 98.737%,
+    0.291% 98.987%,
+    0.41% 99.21%,
+    0.55% 99.401%,
+    0.706% 99.556%,
+    0.878% 99.672%,
+    1.062% 99.745%,
+    1.257% 99.771%,
+    63.955% 100%,
+    63.955% 100%,
+    64.15% 99.976%,
+    64.335% 99.904%,
+    64.508% 99.789%,
+    64.665% 99.634%,
+    64.805% 99.443%,
+    64.925% 99.22%,
+    65.023% 98.97%,
+    65.096% 98.695%,
+    65.142% 98.401%,
+    65.157% 98.091%,
+    65.157% 81.436%,
+    65.157% 81.436%,
+    65.173% 81.126%,
+    65.219% 80.832%,
+    65.291% 80.558%,
+    65.389% 80.308%,
+    65.509% 80.086%,
+    65.648% 79.895%,
+    65.806% 79.74%,
+    65.978% 79.624%,
+    66.162% 79.551%,
+    66.357% 79.526%,
+    98.801% 79.526%,
+    98.801% 79.526%,
+    98.995% 79.501%,
+    99.18% 79.429%,
+    99.352% 79.313%,
+    99.509% 79.158%,
+    99.649% 78.967%,
+    99.769% 78.745%,
+    99.866% 78.495%,
+    99.939% 78.221%,
+    99.984% 77.927%,
+    100% 77.617%,
+    100% 9.595%,
+    100% 9.595%,
+    99.984% 9.285%,
+    99.939% 8.991%,
+    99.866% 8.717%,
+    99.769% 8.467%,
+    99.649% 8.245%,
+    99.509% 8.054%,
+    99.352% 7.898%,
+    99.18% 7.783%,
+    98.995% 7.71%,
+    98.801% 7.685%,
+    81.799% 7.685%,
+    81.799% 7.685%,
+    81.604% 7.66%,
+    81.42% 7.588%,
+    81.248% 7.472%,
+    81.091% 7.317%,
+    80.951% 7.126%,
+    80.831% 6.904%,
+    80.734% 6.653%,
+    80.661% 6.379%,
+    80.615% 6.086%,
+    80.6% 5.776%,
+    80.6% 2.005%,
+    80.6% 2.005%,
+    80.584% 1.695%,
+    80.539% 1.401%,
+    80.466% 1.127%,
+    80.368% 0.877%,
+    80.249% 0.655%,
+    80.109% 0.464%,
+    79.952% 0.309%,
+    79.78% 0.193%,
+    79.595% 0.12%,
+    79.4% 0.095%,
+    43.598% 0.095%,
+    43.598% 0.095%,
+    43.404% 0.12%,
+    43.219% 0.193%,
+    43.047% 0.309%,
+    42.89% 0.464%,
+    42.75% 0.655%,
+    42.63% 0.877%,
+    42.533% 1.127%,
+    42.46% 1.401%,
+    42.414% 1.695%,
+    42.399% 2.005%,
+    42.399% 6.731%,
+    42.399% 6.731%,
+    42.383% 7.04%,
+    42.338% 7.334%,
+    42.265% 7.608%,
+    42.167% 7.858%,
+    42.048% 8.081%,
+    41.908% 8.272%,
+    41.751% 8.427%,
+    41.579% 8.543%,
+    41.394% 8.615%,
+    41.199% 8.64%,
+    1.259% 8.64%,
+    1.259% 8.64%,
+    1.065% 8.665%,
+    0.88% 8.737%,
+    0.708% 8.853%,
+    0.551% 9.008%,
+    0.411% 9.199%,
+    0.291% 9.422%,
+    0.194% 9.672%,
+    0.121% 9.946%,
+    0.076% 10.24%,
+    0.06% 10.549%
+  );
+}
+
+.has_clip_vertical {
+  clip-path: polygon(
+    0.186% 17.784%,
+    0.186% 94.227%,
+    0.186% 94.227%,
+    0.259% 95.133%,
+    0.47% 95.993%,
+    0.808% 96.795%,
+    1.262% 97.527%,
+    1.819% 98.178%,
+    2.469% 98.736%,
+    3.199% 99.19%,
+    4% 99.529%,
+    4.858% 99.741%,
+    5.762% 99.814%,
+    61.896% 99.814%,
+    61.896% 99.814%,
+    62.8% 99.741%,
+    63.658% 99.529%,
+    64.459% 99.19%,
+    65.189% 98.736%,
+    65.839% 98.178%,
+    66.396% 97.527%,
+    66.85% 96.795%,
+    67.188% 95.993%,
+    67.399% 95.133%,
+    67.472% 94.227%,
+    67.472% 90.596%,
+    67.472% 90.596%,
+    67.545% 89.69%,
+    67.756% 88.83%,
+    68.095% 88.029%,
+    68.548% 87.296%,
+    69.105% 86.646%,
+    69.755% 86.087%,
+    70.486% 85.633%,
+    71.286% 85.294%,
+    72.144% 85.082%,
+    73.048% 85.009%,
+    94.238% 85.009%,
+    94.238% 85.009%,
+    95.142% 84.936%,
+    96% 84.725%,
+    96.801% 84.386%,
+    97.531% 83.931%,
+    98.181% 83.373%,
+    98.738% 82.722%,
+    99.192% 81.99%,
+    99.53% 81.189%,
+    99.741% 80.329%,
+    99.814% 79.423%,
+    99.814% 5.68%,
+    99.814% 5.68%,
+    99.741% 4.774%,
+    99.53% 3.914%,
+    99.192% 3.112%,
+    98.738% 2.38%,
+    98.181% 1.729%,
+    97.531% 1.171%,
+    96.801% 0.717%,
+    96% 0.378%,
+    95.142% 0.166%,
+    94.238% 0.093%,
+    18.123% 0.093%,
+    18.123% 0.093%,
+    17.218% 0.166%,
+    16.36% 0.378%,
+    15.56% 0.717%,
+    14.829% 1.171%,
+    14.18% 1.729%,
+    13.622% 2.38%,
+    13.169% 3.112%,
+    12.831% 3.914%,
+    12.619% 4.774%,
+    12.546% 5.68%,
+    12.546% 6.611%,
+    12.546% 6.611%,
+    12.473% 7.517%,
+    12.262% 8.377%,
+    11.924% 9.178%,
+    11.471% 9.91%,
+    10.913% 10.561%,
+    10.263% 11.12%,
+    9.533% 11.574%,
+    8.733% 11.913%,
+    7.875% 12.124%,
+    6.97% 12.197%,
+    5.762% 12.197%,
+    5.762% 12.197%,
+    4.858% 12.271%,
+    4% 12.482%,
+    3.199% 12.821%,
+    2.469% 13.275%,
+    1.819% 13.834%,
+    1.262% 14.485%,
+    0.808% 15.217%,
+    0.47% 16.018%,
+    0.259% 16.878%,
+    0.186% 17.784%
+  );
+}
+
+.has_clip_featurecard {
+  clip-path: polygon(
+    0.168% 2.97%,
+    0.168% 83.876%,
+    0.168% 83.876%,
+    0.211% 84.334%,
+    0.338% 84.77%,
+    0.541% 85.176%,
+    0.814% 85.546%,
+    1.149% 85.876%,
+    1.539% 86.159%,
+    1.978% 86.389%,
+    2.459% 86.56%,
+    2.974% 86.667%,
+    3.518% 86.704%,
+    20.89% 86.704%,
+    20.89% 86.704%,
+    21.156% 86.713%,
+    21.418% 86.74%,
+    21.675% 86.783%,
+    21.927% 86.843%,
+    22.172% 86.92%,
+    22.41% 87.012%,
+    22.638% 87.12%,
+    22.857% 87.243%,
+    23.064% 87.381%,
+    23.259% 87.533%,
+    36.875% 99.03%,
+    36.875% 99.03%,
+    37.07% 99.182%,
+    37.277% 99.32%,
+    37.496% 99.443%,
+    37.724% 99.551%,
+    37.962% 99.643%,
+    38.207% 99.72%,
+    38.459% 99.78%,
+    38.716% 99.823%,
+    38.978% 99.85%,
+    39.244% 99.859%,
+    96.482% 99.859%,
+    96.482% 99.859%,
+    97.026% 99.822%,
+    97.541% 99.714%,
+    98.022% 99.543%,
+    98.461% 99.313%,
+    98.851% 99.03%,
+    99.186% 98.7%,
+    99.459% 98.33%,
+    99.662% 97.924%,
+    99.789% 97.489%,
+    99.832% 97.03%,
+    99.832% 8.769%,
+    99.832% 8.769%,
+    99.789% 8.311%,
+    99.662% 7.875%,
+    99.459% 7.469%,
+    99.186% 7.099%,
+    98.851% 6.769%,
+    98.461% 6.486%,
+    98.022% 6.256%,
+    97.541% 6.085%,
+    97.026% 5.978%,
+    96.482% 5.941%,
+    90.165% 5.941%,
+    90.165% 5.941%,
+    89.9% 5.932%,
+    89.638% 5.905%,
+    89.38% 5.862%,
+    89.128% 5.802%,
+    88.883% 5.725%,
+    88.645% 5.633%,
+    88.417% 5.525%,
+    88.198% 5.402%,
+    87.991% 5.264%,
+    87.796% 5.112%,
+    82.891% 0.97%,
+    82.891% 0.97%,
+    82.696% 0.818%,
+    82.488% 0.68%,
+    82.27% 0.557%,
+    82.041% 0.449%,
+    81.804% 0.357%,
+    81.559% 0.28%,
+    81.307% 0.22%,
+    81.049% 0.177%,
+    80.787% 0.15%,
+    80.522% 0.141%,
+    3.518% 0.141%,
+    3.518% 0.141%,
+    2.974% 0.178%,
+    2.459% 0.286%,
+    1.978% 0.457%,
+    1.539% 0.687%,
+    1.149% 0.97%,
+    0.814% 1.3%,
+    0.541% 1.67%,
+    0.338% 2.076%,
+    0.211% 2.511%,
+    0.168% 2.97%
+  );
+}
+
+.flex-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.flex-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.general-text {
+  font-size: var(--mantine-font-size-sm);
+}
+
+.celebration-large-text {
+  font-size: 3rem;
+  font-weight: 400;
+  font-family: var(--font-celebrations-heading);
+  color: var(--color-celebrations-primary-950);
+  line-height: 3.5rem;
+}
+
+.celebration-header {
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-family: var(--font-celebrations-heading);
+  color: var(--color-celebrations-primary-950);
+  line-height: 4rem;
+}
+
+.celebration-subheader {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 600;
+  color: var(--color-celebrations-primary-950);
+  margin-bottom: var(--mantine-spacing-md);
+  text-transform: uppercase;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .celebration-header {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* Media query for tablet devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .celebration-header {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+}
+
+.event-large-text {
+  font-size: 3rem;
+  font-weight: 400;
+  font-family: var(--font-events-heading);
+  color: var(--color-events-primary-950);
+  line-height: 3rem;
+}
+
+.event-header {
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: var(--font-events-heading);
+  color: var(--color-events-primary-950);
+  line-height: 3.2rem;
+}
+
+.event-subheader {
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 600;
+  color: var(--color-events-primary-950);
+  margin-bottom: var(--mantine-spacing-md);
+  text-transform: uppercase;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .event-header {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* Media query for tablet devices */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .event-header {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+}
