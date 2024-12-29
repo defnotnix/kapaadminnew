@@ -24,6 +24,7 @@ const paperElementConfig = {
 };
 
 export function FeaturedSectionCard({
+  id,
   year,
   category,
   title,
@@ -51,6 +52,7 @@ export function FeaturedSectionCard({
         radius="lg"
         h={{ base: 300, md: 400, lg: 550 }}
         style={{
+          cusor: "pointer",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -59,6 +61,7 @@ export function FeaturedSectionCard({
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
+        onClick={() => Router.push(`/events/events/${id}`)}
       >
         <Box>
           <Group gap={0} align="flex-start">

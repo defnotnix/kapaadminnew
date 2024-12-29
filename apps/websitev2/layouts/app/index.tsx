@@ -29,7 +29,7 @@ export function LayoutApp({ children }: PropsWithChildren) {
       <AppWrapper
         theme={configMantineTheme}
         defaultColorScheme={"light"}
-        title="vCommerce"
+        title="Classics Projects"
         classNames={classes}
       >
         <AppContext>{children}</AppContext>

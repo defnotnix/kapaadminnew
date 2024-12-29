@@ -103,7 +103,7 @@ export function ModuleCelebrationsEvents() {
         res.data
           .filter((e: any) => e.event_category == 1)
           .map(async (e: any) => {
-            const images = await apiDispatch.get({
+            const images: any = await apiDispatch.get({
               url: `/events/image/`,
               params: { event_id: e.id },
             });

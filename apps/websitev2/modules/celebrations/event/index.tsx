@@ -35,6 +35,7 @@ import { AnimatedText } from "@/components/AnimatedText";
 
 import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
+import { useRouter } from "next/navigation";
 
 const projects: any[] = [
   {
@@ -86,6 +87,8 @@ const projects: any[] = [
 ];
 
 export function ModuleCelebrationsEvents() {
+  const Router = useRouter();
+
   // * DEFINITION
 
   const [active, setActive] = useState(0);
@@ -102,16 +105,12 @@ export function ModuleCelebrationsEvents() {
 
       const newdata = await Promise.all(
         res.data
-          .filter((e: any) => e.event_category == 1)
+          .filter((e: any) => e.company == 1)
           .map(async (e: any) => {
-            const images = await apiDispatch.get({
-              url: `/events/image/`,
-              params: { event_id: e.id },
-            });
-
             return {
               ...e,
-              images: images.err ? [] : images.data || [],
+              images: e.event_images,
+              videos: e.event_video,
             };
           })
       );
@@ -603,6 +602,9 @@ export function ModuleCelebrationsEvents() {
                   tt="uppercase"
                   fw={600}
                   rightSection={<ArrowUpRight />}
+                  onClick={() => {
+                    Router.push("/events/events/" + data[active]?.id);
+                  }}
                 >
                   View full details
                 </Button>

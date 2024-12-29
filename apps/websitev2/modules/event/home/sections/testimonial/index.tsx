@@ -29,7 +29,7 @@ import { spring } from "motion";
 import { motion } from "framer-motion";
 import { useInterval } from "@mantine/hooks";
 
-export function _SectionTestimonials() {
+export function _SectionTestimonials({ testimonials }: any) {
   // * DEFINITIONS
 
   const [active, setActive] = useState(0);

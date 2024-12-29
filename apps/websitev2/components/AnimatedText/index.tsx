@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import * as React from "react";
 
 export function AnimatedText({
-  text,
+  text="",
   className,
   animate,
 }: {

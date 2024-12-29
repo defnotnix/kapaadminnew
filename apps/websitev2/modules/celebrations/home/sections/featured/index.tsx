@@ -130,6 +130,7 @@ export function _Section({ events = [] }: { events: any[] }) {
                       viewport={{ once: true, amount: 0.5 }}
                     >
                       <FeaturedSectionCard
+                        id={item.id}
                         image={
                           item.event_images && item.event_images.length
                             ? item?.event_images[0]?.image
@@ -146,7 +147,20 @@ export function _Section({ events = [] }: { events: any[] }) {
 
           <Space h={50} />
 
-          <Group justify="flex-end">
+          <Group justify="center" hiddenFrom="lg">
+            <UnstyledButton
+              p="md"
+              onClick={() => {
+                Router.push("/celebrations/events");
+              }}
+            >
+              <div className="celebration-subheader flex-left">
+                <AnimatedText text="VIEW ALL OUR FEATURED WORKS" />
+              </div>
+            </UnstyledButton>
+          </Group>
+
+          <Group justify="flex-end" visibleFrom="lg">
             <UnstyledButton
               p="md"
               onClick={() => {
@@ -164,7 +178,7 @@ export function _Section({ events = [] }: { events: any[] }) {
           style={{
             position: "absolute",
             top: "50%",
-            background:
+            backgroundImage:
               "linear-gradient(to right, var(--color-celebrations-primary-300), var(--color-celebrations-primary-400))",
             display: "block",
             width: "100%",

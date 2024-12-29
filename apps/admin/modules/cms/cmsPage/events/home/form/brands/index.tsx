@@ -29,13 +29,13 @@ export const _cmsEventsHomeBrandForms = [
     config: formPropsBrand1,
   },
   {
-    header: "Event Hero-Brand 4",
+    header: "Event Hero-Brand 5",
     module: FormBrand1,
     id: 52,
     config: formPropsBrand1,
   },
   {
-    header: "Event Hero-Brand 4",
+    header: "Event Hero-Brand 6",
     module: FormBrand1,
     id: 53,
     config: formPropsBrand1,

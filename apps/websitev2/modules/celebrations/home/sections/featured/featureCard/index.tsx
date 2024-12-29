@@ -25,6 +25,7 @@ const paperElementConfig = {
 };
 
 export function FeaturedSectionCard({
+  id,
   year,
   category,
   title,
@@ -48,7 +49,11 @@ export function FeaturedSectionCard({
   return (
     <>
       <div style={{ position: "relative" }} className={classes.root}>
-        <Paper className="has_clip_featurecard" p="6px">
+        <Paper
+          className="has_clip_featurecard"
+          p="6px"
+          onClick={() => Router.push(`/celebrations/events/${id}`)}
+        >
           <Paper
             className="has_clip_featurecard"
             radius="lg"
@@ -57,7 +62,7 @@ export function FeaturedSectionCard({
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
-              background: `url(${image})`,
+              backgroundImage: `url(${image})`,
               backgroundSize: "cover",
             }}
           />

@@ -24,8 +24,12 @@ import { motion } from "framer-motion";
 
 import { variantGeneralDelay } from "@/animation/variantGeneral";
 
+import { useRouter } from "next/navigation";
+
 export function _SectionFeatured({ events }: { events: any[] }) {
   // * DEFINITIONS
+
+  const Router = useRouter();
 
   // * CONTEXTS
 
@@ -91,22 +95,32 @@ export function _SectionFeatured({ events }: { events: any[] }) {
 
         <Container>
           <SimpleGrid cols={{ base: 1, lg: 3 }} my="md">
-            {events.map((item: any, index: number) => (
-              <motion.div
-                key={index}
-                variants={variantGeneralDelay(0.1 * index)}
-                initial="initial"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-              >
-                <FeaturedSectionCard
-                  image={item.image}
-                  year={new Date(item?.event_date).getFullYear()}
-                  title={item?.shortname}
-                  number={index + 1}
-                />
-              </motion.div>
-            ))}
+            {events
+              .filter((e: any) => {
+                return e.company == 1;
+              })
+              .slice(0, 3)
+              .map((item: any, index: number) => (
+                <motion.div
+                  key={index}
+                  variants={variantGeneralDelay(0.1 * index)}
+                  initial="initial"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                >
+                  <FeaturedSectionCard
+                    id={item?.id}
+                    image={
+                      item.event_images && item.event_images.length
+                        ? item?.event_images[0]?.image
+                        : 'image="https://images.prismic.io/marie-guillaume/e0d32bc8-8fee-47b8-985a-c7256f882ecc_lucie-et-paul-le-touquet6.jpg?fm=webp&w=1100&q=45"'
+                    }
+                    year={new Date(item?.event_date).getFullYear()}
+                    title={item?.shortname}
+                    number={index + 1}
+                  />
+                </motion.div>
+              ))}
           </SimpleGrid>
         </Container>
 
@@ -114,7 +128,11 @@ export function _SectionFeatured({ events }: { events: any[] }) {
           <Space h={50} />
 
           <Group justify="center" hiddenFrom="lg">
-            <UnstyledButton>
+            <UnstyledButton
+              onClick={() => {
+                Router.push("/events/event");
+              }}
+            >
               <div className="event-subheader flex-left">
                 <AnimatedText text="VIEW ALL OUR FEATURED WORKS" />
               </div>
@@ -122,7 +140,11 @@ export function _SectionFeatured({ events }: { events: any[] }) {
           </Group>
 
           <Group justify="flex-end" visibleFrom="lg">
-            <UnstyledButton>
+            <UnstyledButton
+              onClick={() => {
+                Router.push("/events/event");
+              }}
+            >
               <div className="event-subheader flex-left">
                 <AnimatedText text="VIEW ALL OUR FEATURED WORKS" />
               </div>

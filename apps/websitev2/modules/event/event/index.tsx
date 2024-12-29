@@ -6,7 +6,6 @@ import {
   ActionIcon,
   Box,
   Button,
-  Center,
   Group,
   Image,
   Overlay,
@@ -15,6 +14,8 @@ import {
   Stack,
   Text,
   Title,
+  Center,
+  Loader,
 } from "@mantine/core";
 //styles
 import classes from "./event.module.css";
@@ -34,6 +35,7 @@ import { AnimatedText } from "@/components/AnimatedText";
 
 import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
+import { useRouter } from "next/navigation";
 
 const projects = [
   {
@@ -48,6 +50,8 @@ const projects = [
 export function ModuleEventsEvents() {
   // * DEFINITION
 
+  const Router = useRouter();
+
   const [active, setActive] = useState(0);
   const [showText, setShowText] = useState(false);
 
@@ -58,7 +62,22 @@ export function ModuleEventsEvents() {
     queryFn: async () => {
       const res: any = await apiDispatch.get({ url: "/events/info/" });
       console.log(res);
-      return res.data;
+
+      const newdata = await Promise.all(
+        res.data
+          .filter((e: any) => e.company == 2)
+          .map(async (e: any) => {
+            return {
+              ...e,
+              images: e.event_images,
+              videos: e.event_video,
+            };
+          })
+      );
+
+      console.log(newdata);
+
+      return newdata;
     },
     initialData: [],
   });
@@ -85,6 +104,14 @@ export function ModuleEventsEvents() {
     animateEntry();
   }, []);
 
+  if (isFetching) {
+    return (
+      <Center h={500}>
+        <Loader size={16} />
+      </Center>
+    );
+  }
+
   return (
     <>
       <section
@@ -103,7 +130,9 @@ export function ModuleEventsEvents() {
         >
           <iframe
             src={
-              projects[active].videourl +
+              (data[active]?.video && data[active]?.video.length
+                ? data[active]?.video[0]?.link
+                : "https://www.youtube.com/embed/LgMbITJUdM0?si=tRtybE0arabFUH6U") +
               "&autoplay=1&loop=1&controls=0&mute=1&hd=1&start=0"
             }
             title="YouTube video player"
@@ -144,14 +173,11 @@ export function ModuleEventsEvents() {
                 fontFamily: "var(--font-events-heading)",
               }}
             >
-              <AnimatedText
-                animate={showText}
-                text={projects[active]?.titlehead}
-              />
+              <AnimatedText animate={showText} text={data[active]?.shortname} />
               <Group>
                 <AnimatedText
                   animate={showText}
-                  text={projects[active]?.titletail}
+                  text={data[active]?.shortname || ""}
                 />
               </Group>
             </Title>
@@ -165,9 +191,9 @@ export function ModuleEventsEvents() {
               animate={showText ? "visible" : ""}
             >
               <Text size="xs" opacity={0.6} ta="right">
-                Hosted at Magical Venue in Gairidhara, Kathmandu
+                Hosted at {data[active]?.venue}
                 <br />
-                24 May, 2022
+                {String(data[active]?.event_date).substring(0, 10)}
               </Text>
             </motion.div>
             <Space h="sm" />
@@ -184,6 +210,9 @@ export function ModuleEventsEvents() {
                   tt="uppercase"
                   fw={600}
                   rightSection={<ArrowUpRight />}
+                  onClick={() => {
+                    Router.push("/events/events/" + data[active]?.id);
+                  }}
                 >
                   View full details
                 </Button>

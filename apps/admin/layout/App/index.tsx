@@ -9,7 +9,6 @@ import "@/config/styles/global.css";
 import { configApplication } from "@/config/app.config";
 //oauth
 
-
 export function LayoutApp({ children }: PropsWithChildren) {
   return (
     <QueryWrapper
@@ -26,7 +25,7 @@ export function LayoutApp({ children }: PropsWithChildren) {
       <AppWrapper
         theme={configMantineTheme}
         defaultColorScheme={"light"}
-        title="vCommerce"
+        title="Classics Projects"
         classNames={classes}
       >
         {children}

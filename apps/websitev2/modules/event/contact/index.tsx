@@ -50,7 +50,7 @@ export function ModuleEventsContact({
     <>
       <Container py={200}>
         <Grid>
-          <Grid.Col span={{ base: 12, lg: 4 }}>
+          <Grid.Col span={{ base: 12, lg: 4 }} visibleFrom="lg">
             <Stack gap="xl">
               <Text size="sm">THE CLASSICS PROJECT</Text>
 

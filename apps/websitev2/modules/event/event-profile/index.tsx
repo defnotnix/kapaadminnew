@@ -42,9 +42,17 @@ export function ModuleEventEventProfile() {
         },
       });
 
+      const vidData: any = await apiDispatch.get({
+        url: "/events/video/",
+        params: {
+          event_id: Params.id,
+        },
+      });
+
       console.log({
         ...res.data,
         images: imgData.data,
+        video: vidData.data,
       });
 
       return {
@@ -81,9 +89,7 @@ export function ModuleEventEventProfile() {
                 lineHeight: "5rem",
               }}
             >
-              <AnimatedText text="Everest Hackathon" />
-              <AnimatedText text="May, 2024, Organizaed by" />
-              <AnimatedText text="Hope Foundation Nepal." />
+              {data.fullname}
             </div>
 
             <Space h="xl" />
@@ -103,11 +109,8 @@ export function ModuleEventEventProfile() {
                 lineHeight: "2rem",
               }}
             >
-              <AnimatedText text="Everest Hackathon" />
-              <AnimatedText text="May, 2024, Organizaed by" />
-              <AnimatedText text="Hope Foundation Nepal." />
+              {data.fullname}
             </div>
-
             <Space h="xl" />
 
             <div className="event-subheader flex-left">
@@ -130,7 +133,7 @@ export function ModuleEventEventProfile() {
               <Image
                 radius="md"
                 h={{ base: 600, lg: "80vh" }}
-                src="https://ijnet.org/sites/default/files/styles/full_width_node/public/migrated/2015/10/10495771084_834631fc73_h.jpg?itok=uONavxYG"
+                src={data?.images[0]?.image}
               />
 
               <SimpleGrid py={100} cols={{ base: 1, lg: 2 }}>
@@ -146,16 +149,7 @@ export function ModuleEventEventProfile() {
                   <AnimatedText text="26 Micro Events" />
                 </div>
                 <Text w={{ base: "auto", lg: 600 }} size="sm">
-                  Meagan and Tom’s lakeside wedding was a breathtaking event of
-                  love and sophistication, seamlessly blending natural beauty
-                  with timeless elegance. Hosted at the serene Waverley Country
-                  Club, the event featured sweeping waterfront views, perfectly
-                  complemented by exquisite floral designs from Brier & Ivy.
-                  Every moment was beautifully captured by Janet Lin
-                  Photography, ensuring memories as vivid as the day itself.
-                  From the intimate ceremony to the lively reception, this event
-                  was a true testament to creative collaboration and impeccable
-                  planning.
+                  {data?.event_description}
                 </Text>
               </SimpleGrid>
             </Stack>
@@ -173,39 +167,21 @@ export function ModuleEventEventProfile() {
               <Image
                 radius="md"
                 h={{ base: 250, lg: 500 }}
-                src="https://zeb-consulting.com/files/styles/content_layout_default/shared/media/images/2019-11/Header_Hackaton_default_schmal_1_1920x570.jpg.webp?itok=mApyfLjE"
+                src={data?.images[0]?.image}
               />
             </motion.div>
           </SimpleGrid>
 
           <SimpleGrid cols={2}>
-            <Stack key={1}>
-              {data?.images
-                .filter((_: any, index: number) => index % 2 !== 0)
-                .map((item: any, index: number) => (
-                  <Paper key={index} p={6} withBorder shadow="md">
-                    <Image
-                      radius="md"
-                      h={{ base: 250, lg: 500 }}
-                      src="https://zeb-consulting.com/files/styles/content_layout_default/shared/media/images/2019-11/Header_Hackaton_default_schmal_1_1920x570.jpg.webp?itok=mApyfLjE"
-                    />
-                  </Paper>
-                ))}
-            </Stack>
-            <Stack key={2} mt="xl">
-              {" "}
-              {data?.images
-                .filter((_: any, index: number) => index % 2 == 0)
-                .map((item: any, index: number) => (
-                  <Paper key={index} p={6} withBorder shadow="md">
-                    <Image
-                      radius="md"
-                      h={{ base: 250, lg: 500 }}
-                      src="https://zeb-consulting.com/files/styles/content_layout_default/shared/media/images/2019-11/Header_Hackaton_default_schmal_1_1920x570.jpg.webp?itok=mApyfLjE"
-                    />
-                  </Paper>
-                ))}
-            </Stack>
+            {data?.images.map((item: any, index: number) => (
+              <Paper key={index} p={6} withBorder shadow="md">
+                <Image
+                  radius="md"
+                  h={{ base: 250, lg: 500 }}
+                  src={item?.image}
+                />
+              </Paper>
+            ))}
           </SimpleGrid>
         </Container>
       </section>

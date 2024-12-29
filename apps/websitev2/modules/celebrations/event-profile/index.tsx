@@ -43,9 +43,17 @@ export function ModuleCelebrationEventProfile() {
         },
       });
 
+      const vidData: any = await apiDispatch.get({
+        url: "/events/video/",
+        params: {
+          event_id: Params.id,
+        },
+      });
+
       console.log({
         ...res.data,
         images: imgData.data,
+        video: vidData.data,
       });
 
       return {

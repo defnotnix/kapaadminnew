@@ -15,6 +15,7 @@ import imgSocieties from "@/assets/images/brand/societies.png";
 import imgCreations from "@/assets/images/brand/creations.png";
 //motion
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const branches = [
   {
@@ -43,6 +44,8 @@ export function BranchNav() {
   // * DEFINITIONS
 
   const [active, { toggle }] = useDisclosure(false);
+
+  const Router = useRouter();
 
   // * CONTEXTS
 
@@ -82,7 +85,13 @@ export function BranchNav() {
                     exit={{ y: 100, opacity: 0 }}
                     key={index}
                   >
-                    <Box p="md">
+                    <Box
+                      p="md"
+                      onClick={() => {
+                        Router.push(item.url);
+                        toggle();
+                      }}
+                    >
                       <Image h={64} w={64} src={item.image} />
                     </Box>
                   </motion.div>
