@@ -108,7 +108,11 @@ export function AdminNavLayoutSideNav({
                 <ActionIcon
                   {...buttonStyles}
                   onClick={() => {
-                    setActive(item);
+                    if (item?.childrens) {
+                      setActive(item);
+                    } else {
+                      Router.push(item.url || "");
+                    }
                   }}
                   size="lg"
                 >
@@ -251,7 +255,8 @@ export function AdminNavLayoutSideNav({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={cx(classes.subnavItem, {
-                      [classes.subnavItem_active]: Pathname === active.url + item.url,
+                      [classes.subnavItem_active]:
+                        Pathname === active.url + item.url,
                     })}
                   >
                     <UnstyledButton

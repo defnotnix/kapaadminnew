@@ -7,19 +7,19 @@ export const _cmsCelebrationsHomePhaseForms = [
   {
     header: "Phase 1 : Pre-Event",
     module: FormMainCard,
-    id: 16,
+    id: 7,
     config: formPropsMainCard,
   },
   {
     header: "Phase 2 : During-Event",
     module: FormMainCard,
-    id: 17,
+    id: 8,
     config: formPropsMainCard,
   },
   {
     header: "Phase 3 : Post-Event",
     module: FormMainCard,
-    id: 18,
+    id: 9,
     config: formPropsMainCard,
   },
 ];

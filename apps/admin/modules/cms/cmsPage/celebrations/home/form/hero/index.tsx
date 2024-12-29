@@ -11,31 +11,31 @@ export const _cmsCelebrationsHomeHeroForms = [
   {
     header: "Event Hero-Showcase 1",
     module: FormShowcase1,
-    id: 10,
+    id: 1,
     config: formPropsShowcase1,
   },
   {
     header: "Event Hero-Showcase 2",
     module: FormShowcase1,
-    id: 11,
+    id: 2,
     config: formPropsShowcase1,
   },
   {
     header: "Event Hero-Showcase 3",
     module: FormShowcase1,
-    id: 12,
+    id: 3,
     config: formPropsShowcase1,
   },
   {
     header: "Event Hero-Showcase 4",
     module: FormShowcase1,
-    id: 13,
+    id: 4,
     config: formPropsShowcase1,
   },
   {
     header: "Hero Text Contents",
     module: FormTextDetails,
-    id: 14,
+    id: 5,
     config: formPropsTextDetails,
   },
 ];

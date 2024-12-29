@@ -7,19 +7,19 @@ export const _cmsCelebrationsHomeEndNoteForms = [
   {
     header: "End-Note 1 : Pre-Event",
     module: FormMainCard,
-    id: 16,
+    id: 11,
     config: formPropsMainCard,
   },
   {
     header: "End-Note 2 : During-Event",
     module: FormMainCard,
-    id: 17,
+    id: 12,
     config: formPropsMainCard,
   },
   {
     header: "End-Note 3 : Post-Event",
     module: FormMainCard,
-    id: 18,
+    id: 13,
     config: formPropsMainCard,
   },
 ];

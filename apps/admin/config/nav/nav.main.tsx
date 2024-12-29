@@ -97,22 +97,6 @@ export const navItemAuthentication = {
         },
       ],
     },
-
-    {
-      group: "Logs & System",
-      childrens: [
-        {
-          label: "Activity Logs",
-          url: "/logs",
-          icon: Clock,
-        },
-        {
-          label: "System Details",
-          url: "/logs",
-          icon: Lightbulb,
-        },
-      ],
-    },
   ],
 };
 
