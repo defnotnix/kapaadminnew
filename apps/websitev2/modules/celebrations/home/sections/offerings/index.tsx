@@ -24,32 +24,32 @@ const services = [
   {
     url: "",
     label: "Engagements",
-    img: "https://images.prismic.io/marie-guillaume/b385362d-4a45-474d-a058-1f8605b39092_Coralie-et-Alexandre-Marrakech-19.jpg?fm=webp&w=500&q=auto",
+    img: "https://images.prismic.io/marie-guillaume/0d66603d-b934-443d-8d71-36c52fc06eb9_Coralie-et-Alexandre-Marrakech-05.jpg?fm=webp&w=900&q=auto",
     color: "var(--mantine-color-teal-2)",
   },
   {
     url: "",
     label: "Anniversaries",
-    img: "https://images.prismic.io/marie-guillaume/cd6707b5-2627-4f57-ab8a-fccbac96a3f4_Coralie-et-Alexandre-Marrakech-21.jpg?fm=webp&w=900&q=auto",
+    img: "https://images.prismic.io/marie-guillaume/ebf2f199-02b8-4559-9ba0-3fd96970d75b_Coralie-et-Alexandre-Marrakech-20.jpg?fm=webp&w=500&q=auto",
     color: "var(--mantine-color-green-2)",
   },
   {
     url: "",
     label: "Birthdays",
-    img: "https://images.prismic.io/marie-guillaume/8062ab03-351f-4c0d-9ca5-361f2d83a208_Coralie-et-Alexandre-Marrakech-22.jpg?fm=webp&w=1000&q=auto",
+    img: "https://images.unsplash.com/photo-1607977229409-8c278bc34628?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     color: "var(--mantine-color-blue-2)",
   },
 
   {
     url: "",
     label: "Private Events",
-    img: "https://images.prismic.io/marie-guillaume/cb401fb5-a2a7-4b38-96a8-b21cf73adf0a_Coralie-et-Alexandre-Marrakech-12.jpg?fm=webp&w=1000&q=auto",
+    img: "ohttps://images.prismic.io/marie-guillaume/6b0b1b87-1573-4486-95a5-2c6ae1ada9c5_Coralie-et-Alexandre-Marrakech-10.jpg?fm=webp&w=500&q=auto",
     color: "var(--mantine-color-sky-2)",
   },
   {
     url: "",
     label: "Cultural Events",
-    img: "https://images.prismic.io/marie-guillaume/f891de57-f9b9-4351-a0cf-686f4275120e_Coralie-et-Alexandre-Marrakech-13.jpg?fm=webp&w=1400&q=auto",
+    img: "https://images.unsplash.com/photo-1605367334994-40c8555337e1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bmVwYWxpJTIwY3VsdHVyZXxlbnwwfHwwfHx8MA%3D%3D",
     color: "var(--mantine-color-orange-2)",
   },
 ];
