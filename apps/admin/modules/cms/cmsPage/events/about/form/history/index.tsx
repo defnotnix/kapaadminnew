@@ -11,19 +11,19 @@ export const _cmsEventsAboutHistoryForms = [
   {
     header: "Introduction Text Contents",
     module: FormTextDetails,
-    id: 41,
+    id: 34,
     config: formPropsTextDetails,
   },
   {
     header: "Image Showcase-1",
     module: FormShowcase,
-    id: 42,
+    id: 35,
     config: formPropsShowcase,
   },
   {
     header: "Image Showcase-2",
     module: FormShowcase,
-    id: 43,
+    id: 36,
     config: formPropsShowcase,
   },
   // {

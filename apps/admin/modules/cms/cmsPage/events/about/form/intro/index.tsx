@@ -7,7 +7,7 @@ export const _cmsEventsAboutIntroForms = [
   {
     header: "Introduction Text Contents",
     module: FormTextDetails,
-    id: 40,
+    id: 33,
     config: formPropsTextDetails,
   },
 ];

@@ -7,37 +7,37 @@ export const _cmsEventsHomeBrandForms = [
   {
     header: "Event Hero-Brand 1",
     module: FormBrand1,
-    id: 20,
+    id: 48,
     config: formPropsBrand1,
   },
   {
     header: "Event Hero-Brand 2",
     module: FormBrand1,
-    id: 21,
+    id: 49,
     config: formPropsBrand1,
   },
   {
     header: "Event Hero-Brand 3",
     module: FormBrand1,
-    id: 22,
+    id: 50,
     config: formPropsBrand1,
   },
   {
     header: "Event Hero-Brand 4",
     module: FormBrand1,
-    id: 23,
+    id: 51,
     config: formPropsBrand1,
   },
   {
     header: "Event Hero-Brand 5",
     module: FormBrand1,
-    id: 24,
+    id: 52,
     config: formPropsBrand1,
   },
   {
     header: "Event Hero-Brand 6",
     module: FormBrand1,
-    id: 25,
+    id: 53,
     config: formPropsBrand1,
   },
 ];

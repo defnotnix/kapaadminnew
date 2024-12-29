@@ -234,7 +234,13 @@ export function ModuleEntry() {
   });
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        overflow: "hidden",
+      }}
+    >
       <motion.section
         ref={overlayRef}
         initial={{ opacity: 1 }}
@@ -242,34 +248,36 @@ export function ModuleEntry() {
         transition={{ delay: 2 }}
       >
         <section className={classes.animationOverlay}>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            {Array.from({ length: 11 }).map((_, index) => (
-              <motion.div
-                key={index}
-                animate={{
-                  x: (index - 4) * 180,
-
-                  opacity: 1 - Math.abs((index - 5) / 5),
-                }}
-                transition={{
-                  delay: 1,
-                }}
-              >
-                <Paper
+          <Box mt={{ base: "calc(50vh - 80px)", lg: 0 }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              {Array.from({ length: 11 }).map((_, index) => (
+                <motion.div
                   key={index}
-                  className={classes.loaderCircle}
-                  style={{
-                    background:
-                      index == 4
-                        ? "var(--mantine-color-gray-0)"
-                        : "var(--mantine-color-gray-3)",
+                  animate={{
+                    x: (index - 4) * 180,
+
+                    opacity: 1 - Math.abs((index - 5) / 5),
+                  }}
+                  transition={{
+                    delay: 1,
                   }}
                 >
-                  <Center>{index == 4 && <Image src={imgMain.src} />}</Center>
-                </Paper>
-              </motion.div>
-            ))}
-          </motion.div>
+                  <Paper
+                    key={index}
+                    className={classes.loaderCircle}
+                    style={{
+                      background:
+                        index == 4
+                          ? "var(--mantine-color-gray-0)"
+                          : "var(--mantine-color-gray-3)",
+                    }}
+                  >
+                    <Center>{index == 4 && <Image src={imgMain.src} />}</Center>
+                  </Paper>
+                </motion.div>
+              ))}
+            </motion.div>
+          </Box>
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -278,17 +286,20 @@ export function ModuleEntry() {
               delay: 1,
             }}
           >
-            <Group
+            <Text
+              size="xs"
+              tt="uppercase"
+              fw={600}
               style={{
                 position: "absolute",
                 top: "2rem",
-                marginLeft: "-40px",
+                left: 0,
+                width: "100vw",
               }}
+              ta="center"
             >
-              <Text size="xs" tt="uppercase" fw={600}>
-                The Classics Projects
-              </Text>
-            </Group>
+              The Classics Projects
+            </Text>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -304,8 +315,10 @@ export function ModuleEntry() {
               style={{
                 position: "absolute",
                 bottom: "2rem",
-                marginLeft: "-40px",
+                left: 0,
+                width: "100vw",
               }}
+              ta="center"
             >
               The Classics Projects
             </Text>

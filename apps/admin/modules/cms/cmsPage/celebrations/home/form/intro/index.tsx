@@ -7,7 +7,7 @@ export const _cmsCelebrationsHomeIntroForms = [
   {
     header: "Introduction Text Contents",
     module: FormTextDetails,
-    id: 6,
+    id: 15,
     config: formPropsTextDetails,
   },
 ];

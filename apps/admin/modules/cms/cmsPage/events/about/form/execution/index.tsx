@@ -7,7 +7,7 @@ export const _cmsEventsAboutExecutionForms = [
   {
     header: "Event Execution Brief",
     module: FormTextDetails,
-    id: 44,
+    id: 38,
     config: formPropsTextDetails,
   },
 ];

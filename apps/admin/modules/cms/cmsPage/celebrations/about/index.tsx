@@ -30,9 +30,13 @@ import { cmsComponents } from "./home.sections";
 //styles
 import classes from "./_.module.css";
 import { FormHandler } from "@vsphere/core";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function ModuleCMSCelebrationAbout() {
   // * DEFINITIONS
+
+  const Router = useRouter();
 
   // * ROUTERS
 
@@ -102,7 +106,14 @@ export function ModuleCMSCelebrationAbout() {
           left: "1rem",
         }}
       >
-        <ActionIcon color="dark" size={64} radius="xl">
+        <ActionIcon
+          color="dark"
+          size={64}
+          radius="xl"
+          onClick={() => {
+            Router.push("/cms");
+          }}
+        >
           <House />
         </ActionIcon>
         <Button

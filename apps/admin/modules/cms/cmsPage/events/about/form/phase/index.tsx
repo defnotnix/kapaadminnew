@@ -11,25 +11,25 @@ export const _cmsEventsAboutPhaseForms = [
   {
     header: "Phase - Text Contents",
     module: FormTextContent,
-    id: 45,
+    id: 39,
     config: formPropsTextContent,
   },
   {
     header: "Phase 1 : Pre-Event",
     module: FormMainCard,
-    id: 46,
+    id: 49,
     config: formPropsMainCard,
   },
   {
     header: "Phase 2 : During-Event",
     module: FormMainCard,
-    id: 47,
+    id: 41,
     config: formPropsMainCard,
   },
   {
     header: "Phase 3 : Post-Event",
     module: FormMainCard,
-    id: 48,
+    id: 42,
     config: formPropsMainCard,
   },
 ];
