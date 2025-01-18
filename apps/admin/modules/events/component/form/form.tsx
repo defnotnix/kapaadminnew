@@ -27,6 +27,7 @@ import { PictureInPicture, YoutubeLogo } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { getRecords } from "@/modules/company/module.api";
 import { configModule as configModuleCompany } from "@/modules/company/module.config";
+import { configModule as configModuleEventCategory } from "@/modules/event-category/module.config";
 export function _Form() {
   // * DEFINITIONS
 
@@ -40,6 +41,18 @@ export function _Form() {
     queryKey: ["admin", "company"],
     queryFn: async () => {
       const res = await getRecords({ endpoint: configModuleCompany.endpoint });
+      console.log(res);
+      return res;
+    },
+    initialData: [],
+  });
+
+  const queryCategory = useQuery({
+    queryKey: ["admin", "event-category"],
+    queryFn: async () => {
+      const res = await getRecords({
+        endpoint: configModuleEventCategory.endpoint,
+      });
       console.log(res);
       return res;
     },
@@ -103,6 +116,23 @@ export function _Form() {
               label="Event Type"
               description="Type of the Event"
               placeholder="Select Category"
+              {...form.getInputProps("company")}
+            />
+            <Select
+              disabled={!form.getValues().company}
+              data={queryCategory?.data
+                ?.filter((e: any) => {
+                  return e.company == form.getValues().company;
+                })
+                .map((item: any) => {
+                  return {
+                    value: String(item.id),
+                    label: item.name,
+                  };
+                })}
+              label="Event Category"
+              description="Type of the Event"
+              placeholder="Select Category"
               {...form.getInputProps("event_category")}
             />
           </SimpleGrid>
@@ -126,7 +156,7 @@ export function _Form() {
               placeholder="Select Date"
               {...form.getInputProps("event_date")}
               onChange={(e) => {
-                console.log(e)
+                console.log(e);
               }}
             />
             <TextInput

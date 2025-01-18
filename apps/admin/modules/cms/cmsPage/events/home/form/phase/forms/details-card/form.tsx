@@ -94,7 +94,7 @@ export function _Form() {
         />
 
         <TextInput
-          {...form.getInputProps("heading4")}
+          {...form.getInputProps("heading3")}
           required
           placeholder="e.g. story."
           styles={{

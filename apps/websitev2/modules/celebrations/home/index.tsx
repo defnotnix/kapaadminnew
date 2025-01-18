@@ -5,13 +5,16 @@ import { SectionsCelebrationsHome } from "./sections";
 import { apiDispatch } from "@vsphere/core";
 
 import { Box } from "@mantine/core";
+import { useCelebrationContext } from "@/layouts/celebrations";
 
 export function ModuleEventsHome() {
+  const { setPageLoading } = useCelebrationContext();
+
   const { data, isFetching } = useQuery({
     queryKey: ["celebrations", "home"],
     queryFn: async () => {
       const res: any = await apiDispatch.get({ url: "/cms/content/" });
-     
+      setPageLoading(false);
       return res.data;
     },
     initialData: [],

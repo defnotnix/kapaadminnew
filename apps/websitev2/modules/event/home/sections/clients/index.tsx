@@ -17,23 +17,24 @@ export function _SectionClients({ sectionData = [] }: any) {
   return (
     <>
       <Container py={{ base: 40, lg: 100 }} size="xl">
-        <motion.div
-          variants={variantGeneralDelay(0)}
-          initial="initial"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <Box
-            style={{
-              fontSisze: "var(--mantine-font-size-xs)",
-              textAligh: "center",
-            }}
+        <Box hiddenFrom="lg">
+          <motion.div
+            variants={variantGeneralDelay(0)}
+            initial="initial"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
           >
-            <AnimatedText text="We have proudly" animate={true} />
-            <AnimatedText text="organized events for." animate={true} />
-          </Box>
-        </motion.div>
-
+            <Box
+              style={{
+                fontSisze: "var(--mantine-font-size-xs)",
+                textAligh: "center",
+              }}
+            >
+              <AnimatedText text="We have proudly" animate={true} />
+              <AnimatedText text="organized events for." animate={true} />
+            </Box>
+          </motion.div>
+        </Box>
         <SimpleGrid
           cols={3}
           spacing={{ base: "xs", lg: "48px" }}

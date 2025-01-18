@@ -29,7 +29,7 @@ import { spring } from "motion";
 import { motion } from "framer-motion";
 import { useInterval } from "@mantine/hooks";
 
-export function _SectionTestimonials({ testimonials }: any) {
+export function _SectionTestimonials({ testimonials = [], clients = [] }: any) {
   // * DEFINITIONS
 
   const [active, setActive] = useState(0);
@@ -245,19 +245,19 @@ export function _SectionTestimonials({ testimonials }: any) {
               <Stack>
                 <Quotes size={32} weight="fill" />
 
-                <Text size="lg">{data[active]?.message}</Text>
+                <Text size="lg">{testimonials[active]?.message}</Text>
               </Stack>
 
               <Stack>
                 <Group justify="space-between" align="flex-end">
                   <Box>
-                    <Text size="xs">{data[active]?.name}</Text>
+                    <Text size="xs">{testimonials[active]?.name}</Text>
                     <Text size="xs" opacity={0.5}>
-                      {data[active]?.post}
+                      {testimonials[active]?.post}
                     </Text>
                   </Box>
 
-                  <Image src={data[active]?.signature_image} w={150} />
+                  <Image src={testimonials[active]?.signature_image} w={150} />
                 </Group>
                 <Progress value={80} size="xs" />
               </Stack>
@@ -275,19 +275,19 @@ export function _SectionTestimonials({ testimonials }: any) {
               <Stack>
                 <Quotes size={32} weight="fill" />
 
-                <Text size="lg">{data[active]?.message}</Text>
+                <Text size="lg">{testimonials[active]?.message}</Text>
               </Stack>
 
               <Stack>
                 <Group justify="space-between" align="flex-end">
                   <Box>
-                    <Text size="xs">{data[active]?.name}</Text>
+                    <Text size="xs">{testimonials[active]?.name}</Text>
                     <Text size="xs" opacity={0.5}>
-                      {data[active]?.post}
+                      {testimonials[active]?.post}
                     </Text>
                   </Box>
 
-                  <Image src={data[active]?.signature_image} w={150} />
+                  <Image src={testimonials[active]?.signature_image} w={150} />
                 </Group>
                 <Progress value={80} size="xs" />
               </Stack>
@@ -385,11 +385,13 @@ export function _SectionTestimonials({ testimonials }: any) {
               repeat: Infinity,
             }}
           >
-            {sliderData.slice(0, 20).map((datainfo, index) => (
-              <div className={classes.slide} key={index}>
-                <img src={datainfo.image} height="30" alt="" />
-              </div>
-            ))}
+            {[...clients, ...clients, ...clients, ...clients]
+              .slice(0, 20)
+              .map((datainfo: any, index: any) => (
+                <div className={classes.slide} key={index}>
+                  <img src={datainfo.image} height="30" alt="" />
+                </div>
+              ))}
           </motion.div>
         </div>
       </section>

@@ -439,7 +439,7 @@ export function LayoutEventsFooter() {
                         We create, you{"    "}
                         <span
                           style={{
-                            fontFamily: "WindSong",
+                            fontFamily:"var(--font-cursive)",
                             fontSize: "3rem",
                             display: "inline-block",
                             marginLeft: "0.5rem",

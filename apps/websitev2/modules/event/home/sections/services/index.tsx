@@ -86,8 +86,6 @@ export function _SectionServices() {
   // * FUNCTIONS
 
   const initiateAnimateFunction = async () => {
-    console.log("initiate");
-
     const dataId = Math.floor(Math.random() * activeServices.length) + 1; // Assuming this is a number, not a string.
 
     // Animate color to transparent
@@ -176,9 +174,9 @@ export function _SectionServices() {
         </Stack>
 
         <Group justify="center" hiddenFrom="lg" my="xl">
-          {mservices.map((item: any) => {
+          {mservices.map((item: any, index: number) => {
             return (
-              <Text size="1.5rem" tt="uppercase" fw={700}>
+              <Text size="1.5rem" tt="uppercase" fw={700} key={index}>
                 {item}
               </Text>
             );

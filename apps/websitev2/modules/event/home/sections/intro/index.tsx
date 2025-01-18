@@ -31,7 +31,7 @@ export function _SectionIntro({ sectionData }: any) {
 
   return (
     <>
-      <Container size="md" py={{ base: 50, lg: 200 }}>
+      <Container size="md" py={{ base: 50, lg: 100 }}>
         <Stack gap="xl">
           <div className="event-header ">
             {title.map((item: string, index: number) => (
@@ -64,14 +64,19 @@ export function _SectionIntro({ sectionData }: any) {
       </Container>
 
       <motion.div
-        initial={{ opacity: 0, x: 0 }}
-        whileInView={{
-          opacity: 1,
-          x: -100,
-          //    transform: "rotate(2deg)"
+        animate={{
+          x: ["0%", "-50%"],
+          transition: {
+            ease: "linear",
+            duration: 50,
+            repeat: Infinity,
+          },
         }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        transition={{
+          duration: 1000, // Adjust speed as needed
+          ease: "linear",
+          repeat: Infinity,
+        }}
       >
         <SimpleGrid cols={12} spacing="xs" w={"200vw"} visibleFrom="lg">
           {Array.from({ length: 6 }).map((_, index) => (

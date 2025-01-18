@@ -35,65 +35,71 @@ import { AnimatedText } from "@/components/AnimatedText";
 
 import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
+import { useRouter } from "next/navigation";
+import { useCelebrationContext } from "@/layouts/celebrations/celebration.context";
 
-// const projects: any[] = [
-//   {
-//     background: "#EEDACE",
-//     titlehead: "Bipul",
-//     titletail: "& Anjali",
-//     images: [
-//       "https://images.prismic.io/marie-guillaume/c3554ec4-911b-4ce4-b603-7d3066179e59_coralie-et-alexandre-marrakech16.jpg?fm=webp&w=1100&q=45",
-//       "https://images.prismic.io/marie-guillaume/67292da6-2a18-41ea-8381-b96383730b9c_Coralie-et-Alexandre-Marrakech-04.jpg?fm=webp&w=1400&q=auto",
-//       "https://images.prismic.io/marie-guillaume/cd6707b5-2627-4f57-ab8a-fccbac96a3f4_Coralie-et-Alexandre-Marrakech-21.jpg?fm=webp&w=900&q=auto",
-//       "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-001.jpg",
-//       "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-004.jpg",
+const projects: any[] = [
+  {
+    background: "#EEDACE",
+    titlehead: "Bipul",
+    titletail: "& Anjali",
+    images: [
+      "https://images.prismic.io/marie-guillaume/c3554ec4-911b-4ce4-b603-7d3066179e59_coralie-et-alexandre-marrakech16.jpg?fm=webp&w=1100&q=45",
+      "https://images.prismic.io/marie-guillaume/67292da6-2a18-41ea-8381-b96383730b9c_Coralie-et-Alexandre-Marrakech-04.jpg?fm=webp&w=1400&q=auto",
+      "https://images.prismic.io/marie-guillaume/cd6707b5-2627-4f57-ab8a-fccbac96a3f4_Coralie-et-Alexandre-Marrakech-21.jpg?fm=webp&w=900&q=auto",
+      "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-001.jpg",
+      "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-004.jpg",
 
-//       "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-010.jpg",
-//       "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-016.jpg",
-//       "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-002.jpg",
+      "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-010.jpg",
+      "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-016.jpg",
+      "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-002.jpg",
 
-//       "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-009.jpg",
-//     ],
-//   },
-//   {
-//     background: "#C6D7E7",
-//     text: "#133352",
-//     titlehead: "Kabin",
-//     titletail: "& Udita",
-//     images: [
-//       "https://images.prismic.io/marie-guillaume/6a78f935-1f01-4640-bc17-b086efe1900f_Charlotte-et-Maxime-Ilede-Re-11.jpg?fm=webp&w=500&q=auto&rect=1000,0,1111,1667&",
-//       "https://images.prismic.io/marie-guillaume/67a2bb9b-8a43-4bfa-8fae-fd08910fc5dd_Charlotte-et-Maxime-Ilede-Re-12.jpg?fm=webp&w=500&q=auto&rect=633,0,1107,1667&",
-//       "https://images.prismic.io/marie-guillaume/e7eead49-f1df-406f-9744-1f4f3de3a884_Charlotte-et-Maxime-Ilede-Re-13.jpg?fm=webp&w=1400&q=auto",
-//       "https://images.prismic.io/marie-guillaume/6a9f3940-5b7d-4f74-ba86-f0a8fc4a98fb_Charlotte-et-Maxime-Ilede-Re-17.jpg?fm=webp&w=1400&q=auto",
-//       "https://images.prismic.io/marie-guillaume/4a55f9fa-f97e-4f38-9327-996f15015c55_Charlotte-et-Maxime-Ilede-Re-08.jpg?fm=webp&w=1400&q=auto",
-//       "https://images.prismic.io/marie-guillaume/11a2b906-1b5f-4aab-81b7-71e46c4f07d8_Charlotte-et-Maxime-Ilede-Re-06.jpg?fm=webp&w=1000&q=auto&rect=560,0,1112,1667&",
-//     ],
-//   },
-//   {
-//     background: "#F1D1D1",
-//     text: "#B95050",
-//     titlehead: "Winnie",
-//     titletail: "& Benny",
-//     images: [
-//       "https://images.prismic.io/marie-guillaume/8f1f6922-bd6a-4123-b547-086675148a62_Winnie-et-James-Belgique-04.jpg?fm=webp&w=500&q=auto",
-//       "https://images.prismic.io/marie-guillaume/bc96b3fd-4f85-4d3d-957d-8838523c38ab_Winnie-et-James-Belgique-03.jpg?fm=webp&w=500&q=auto",
-//       "https://images.prismic.io/marie-guillaume/cd14c891-763d-406a-9047-0e8efae8ae50_Winnie-et-James-Belgique-01.jpg?fm=webp&w=1000&q=auto",
-//       "https://images.prismic.io/marie-guillaume/18ef697b-2c6d-4877-b40d-62b155d76065_Winnie-et-James-Belgique-17.jpg?fm=webp&w=1400&q=auto",
-//       "https://images.prismic.io/marie-guillaume/5d46754b-5c77-4163-923c-dc461a2e393a_Winnie-et-James-Belgique-18.jpg?fm=webp&w=500&q=auto",
-//       "https://images.prismic.io/marie-guillaume/15ea0985-8632-4baa-a4b2-9b85aeff9d9a_Winnie-et-James-Belgique-12.jpg?fm=webp&w=500&q=auto",
-//     ],
-//   },
-// ];
+      "https://albertpalmerphotography.com/wp-content/uploads/2024/11/portfolio24-009.jpg",
+    ],
+  },
+  {
+    background: "#C6D7E7",
+    text: "#133352",
+    titlehead: "Kabin",
+    titletail: "& Udita",
+    images: [
+      "https://images.prismic.io/marie-guillaume/6a78f935-1f01-4640-bc17-b086efe1900f_Charlotte-et-Maxime-Ilede-Re-11.jpg?fm=webp&w=500&q=auto&rect=1000,0,1111,1667&",
+      "https://images.prismic.io/marie-guillaume/67a2bb9b-8a43-4bfa-8fae-fd08910fc5dd_Charlotte-et-Maxime-Ilede-Re-12.jpg?fm=webp&w=500&q=auto&rect=633,0,1107,1667&",
+      "https://images.prismic.io/marie-guillaume/e7eead49-f1df-406f-9744-1f4f3de3a884_Charlotte-et-Maxime-Ilede-Re-13.jpg?fm=webp&w=1400&q=auto",
+      "https://images.prismic.io/marie-guillaume/6a9f3940-5b7d-4f74-ba86-f0a8fc4a98fb_Charlotte-et-Maxime-Ilede-Re-17.jpg?fm=webp&w=1400&q=auto",
+      "https://images.prismic.io/marie-guillaume/4a55f9fa-f97e-4f38-9327-996f15015c55_Charlotte-et-Maxime-Ilede-Re-08.jpg?fm=webp&w=1400&q=auto",
+      "https://images.prismic.io/marie-guillaume/11a2b906-1b5f-4aab-81b7-71e46c4f07d8_Charlotte-et-Maxime-Ilede-Re-06.jpg?fm=webp&w=1000&q=auto&rect=560,0,1112,1667&",
+    ],
+  },
+  {
+    background: "#F1D1D1",
+    text: "#B95050",
+    titlehead: "Winnie",
+    titletail: "& Benny",
+    images: [
+      "https://images.prismic.io/marie-guillaume/8f1f6922-bd6a-4123-b547-086675148a62_Winnie-et-James-Belgique-04.jpg?fm=webp&w=500&q=auto",
+      "https://images.prismic.io/marie-guillaume/bc96b3fd-4f85-4d3d-957d-8838523c38ab_Winnie-et-James-Belgique-03.jpg?fm=webp&w=500&q=auto",
+      "https://images.prismic.io/marie-guillaume/cd14c891-763d-406a-9047-0e8efae8ae50_Winnie-et-James-Belgique-01.jpg?fm=webp&w=1000&q=auto",
+      "https://images.prismic.io/marie-guillaume/18ef697b-2c6d-4877-b40d-62b155d76065_Winnie-et-James-Belgique-17.jpg?fm=webp&w=1400&q=auto",
+      "https://images.prismic.io/marie-guillaume/5d46754b-5c77-4163-923c-dc461a2e393a_Winnie-et-James-Belgique-18.jpg?fm=webp&w=500&q=auto",
+      "https://images.prismic.io/marie-guillaume/15ea0985-8632-4baa-a4b2-9b85aeff9d9a_Winnie-et-James-Belgique-12.jpg?fm=webp&w=500&q=auto",
+    ],
+  },
+];
 
 export function ModuleCelebrationsEvents() {
+  const Router = useRouter();
+
   // * DEFINITION
 
   const [active, setActive] = useState(0);
   const [showText, setShowText] = useState(false);
+  const { dispatch } = useCelebrationContext();
 
   // * CONTEXT
 
   //  * ANIMATIONS
+
   const { data, isFetching } = useQuery({
     queryKey: ["events", "events"],
     queryFn: async () => {
@@ -101,21 +107,20 @@ export function ModuleCelebrationsEvents() {
 
       const newdata = await Promise.all(
         res.data
-          .filter((e: any) => e.event_category == 1)
+          .filter((e: any) => e.company == 1)
           .map(async (e: any) => {
-            const images: any = await apiDispatch.get({
-              url: `/events/image/`,
-              params: { event_id: e.id },
-            });
-
             return {
               ...e,
-              images: images.err ? [] : images.data || [],
+              images: e.event_images,
+              videos: e.event_video,
             };
           })
       );
 
-      console.log(newdata);
+      dispatch({
+        type: "SET_PAGE_LOADING",
+        payload: false,
+      });
 
       return newdata;
     },
@@ -306,15 +311,14 @@ export function ModuleCelebrationsEvents() {
         className={classes.root}
         style={{
           transition: ".5s ease-in-out",
-          background: `${data[active]?.background || "#F1D1D1"}aa`,
+          background: `${projects[active]?.background || "#F1D1D1"}aa`,
           position: "relative",
         }}
       >
         <div
           className={cx(classes.video_container, classes.has_clip)}
           style={{
-            background: `${data[active]?.background || "#F1D1D1"}aa`,
-            position: "absolute",
+            background: `${projects[active]?.background || "#F1D1D1"} `,
           }}
         >
           <Group justify="flex-end" h={"calc(100vh - 10rem)"}>
@@ -323,7 +327,7 @@ export function ModuleCelebrationsEvents() {
                 size="6rem"
                 fw={500}
                 c={
-                  data[active]?.shortname ||
+                  projects[active]?.text ||
                   "var(--color-celebrations-primary-500)"
                 }
                 style={{
@@ -335,12 +339,12 @@ export function ModuleCelebrationsEvents() {
               >
                 <AnimatedText
                   animate={showText}
-                  text={data[active]?.shortname || ""}
+                  text={data[active]?.shortname.split("&")[0] || ""}
                 />
                 <Group>
                   <AnimatedText
                     animate={showText}
-                    text={data[active]?.shortname || ""}
+                    text={"& " + data[active]?.shortname.split("&")[1] || ""}
                   />
                 </Group>
               </Title>
@@ -368,6 +372,7 @@ export function ModuleCelebrationsEvents() {
                     transform: "rotate(-10deg)",
                     overflow: "hidden",
                   }}
+                  visibleFrom="lg"
                 >
                   <Image
                     radius="md"
@@ -395,10 +400,33 @@ export function ModuleCelebrationsEvents() {
                   style={{
                     transform: "rotate(-5deg)",
                   }}
+                  visibleFrom="lg"
                 >
                   <Image
                     radius="md"
                     h={380}
+                    src={data[active]?.images[1]?.image}
+                  />
+                </Paper>
+
+                <Paper
+                  p={10}
+                  radius="md"
+                  withBorder
+                  mb={-50}
+                  ml={200}
+                  shadow="xl"
+                  w={150}
+                  h={200}
+                  style={{
+                    transform: "rotate(-5deg)",
+                    marginLeft: 100,
+                  }}
+                  hiddenFrom="lg"
+                >
+                  <Image
+                    radius="md"
+                    h={180}
                     src={data[active]?.images[1]?.image}
                   />
                 </Paper>
@@ -420,6 +448,7 @@ export function ModuleCelebrationsEvents() {
                   style={{
                     transform: "rotate(10deg)",
                   }}
+                  visibleFrom="lg"
                 >
                   {" "}
                   <Image
@@ -453,6 +482,7 @@ export function ModuleCelebrationsEvents() {
                     transform: "rotate(10deg)",
                     overflow: "hidden",
                   }}
+                  visibleFrom="lg"
                 >
                   <Image
                     radius="md"
@@ -480,6 +510,7 @@ export function ModuleCelebrationsEvents() {
                   style={{
                     transform: "rotate(5deg)",
                   }}
+                  visibleFrom="lg"
                 >
                   <Image
                     radius="md"
@@ -505,13 +536,28 @@ export function ModuleCelebrationsEvents() {
                   style={{
                     transform: "rotate(-2deg)",
                   }}
+                  visibleFrom="lg"
                 >
                   {" "}
-                  <Image
-                    radius="md"
-                    h={380}
-                    src={data[active]?.images[5]?.image}
-                  />
+                  <Image radius="md" h={380} src={data[active]?.images[5]} />
+                </Paper>
+
+                <Paper
+                  p={10}
+                  radius="md"
+                  withBorder
+                  shadow="xl"
+                  w={150}
+                  h={200}
+                  style={{
+                    transform: "rotate(-2deg)",
+                    marginLeft: 200,
+                    marginTop: 50,
+                  }}
+                  hiddenFrom="lg"
+                >
+                  {" "}
+                  <Image radius="md" h={180} src={data[active]?.images[5]} />
                 </Paper>
               </motion.div>
             </Stack>
@@ -520,7 +566,7 @@ export function ModuleCelebrationsEvents() {
           <div className={classes.flower}>
             <MotionProjectFlower
               animate={showText}
-              color={data[active]?.fullname}
+              color={projects[active]?.text}
             />
           </div>
         </div>
@@ -532,7 +578,7 @@ export function ModuleCelebrationsEvents() {
               animate={showText ? "visible" : ""}
             >
               <Text size="xs" ta="right">
-                {data[active]?.fullname}
+                An <b> Event</b> of <b>{data[active]?.fullname}</b>
               </Text>
             </motion.div>
 
@@ -542,9 +588,9 @@ export function ModuleCelebrationsEvents() {
               animate={showText ? "visible" : ""}
             >
               <Text size="xs" opacity={0.6} ta="right">
-                {data[active]?.venue}
+                Hosted at {data[active]?.venue}
                 <br />
-                {String(new Date(data[active]?.event_date))}
+                {String(data[active]?.event_date).substring(0, 10)}
               </Text>
             </motion.div>
             <Space h="sm" />
@@ -561,6 +607,9 @@ export function ModuleCelebrationsEvents() {
                   tt="uppercase"
                   fw={600}
                   rightSection={<ArrowUpRight />}
+                  onClick={() => {
+                    Router.push("/celebrations/events/" + data[active]?.id);
+                  }}
                 >
                   View full details
                 </Button>

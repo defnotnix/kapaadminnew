@@ -362,95 +362,23 @@ export function SectionContact() {
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, lg: 5 }}>
-            <div className="celebration-header flex-left">
-              <AnimatedText text="Share your info" />
-              <AnimatedText text="and we'll get back to you." />
-            </div>
-
-            <Stack my="xl" px="sm">
-              <TextInput
-                ml={"-1.3rem"}
-                styles={{
-                  input: {
-                    background: "var(--color-celebrations-primary-200)",
-                  },
-                  label: {
-                    fontSize: "var(--mantine-font-size-xs)",
-                    paddingLeft: "var(--mantine-spacing-lg)",
-                    opacity: 0.5,
-                    marginBottom: "var(--mantine-spacing-xs)",
-                  },
+            <Paper p="xs" withBorder radius="xl">
+              <div
+                style={{
+                  display: "block",
+                  width: "100%",
+                  borderRadius: "24px",
+                  overflow: "hidden",
                 }}
-                variant="filled"
-                radius="xl"
-                size="xl"
-                label="Your Full Name"
-              />
-              <TextInput
-                ml={"-1.3rem"}
-                styles={{
-                  input: {
-                    background: "var(--color-celebrations-primary-200)",
-                  },
-                  label: {
-                    fontSize: "var(--mantine-font-size-xs)",
-                    paddingLeft: "var(--mantine-spacing-lg)",
-                    opacity: 0.5,
-                    marginBottom: "var(--mantine-spacing-xs)",
-                  },
-                }}
-                variant="filled"
-                radius="xl"
-                size="xl"
-                label="Event Type"
-              />
-              <SimpleGrid cols={2}>
-                <TextInput
-                  ml={"-1.3rem"}
-                  styles={{
-                    input: {
-                      background: "var(--color-celebrations-primary-200)",
-                    },
-                    label: {
-                      fontSize: "var(--mantine-font-size-xs)",
-                      paddingLeft: "var(--mantine-spacing-lg)",
-                      opacity: 0.5,
-                      marginBottom: "var(--mantine-spacing-xs)",
-                    },
-                  }}
-                  variant="filled"
-                  radius="xl"
-                  size="xl"
-                  label="Event Date"
-                />
-                <TextInput
-                  styles={{
-                    input: {
-                      background: "var(--color-celebrations-primary-200)",
-                    },
-                    label: {
-                      fontSize: "var(--mantine-font-size-xs)",
-                      paddingLeft: "var(--mantine-spacing-lg)",
-                      opacity: 0.5,
-                      marginBottom: "var(--mantine-spacing-xs)",
-                    },
-                  }}
-                  variant="filled"
-                  radius="xl"
-                  size="xl"
-                  label="Expected Atendees"
-                />
-              </SimpleGrid>
-              <Group justify="flex-end">
-                <ActionIcon
-                  size="4rem"
-                  radius="xl"
-                  color="var(--color-celebrations-primary-500)"
-                >
-                  <ArrowRight />
-                </ActionIcon>
-              </Group>
-            </Stack>
+              >
+                <iframe
+                  title="Classics Projects Location"
+                  style={{ width: "100%", height: "500px", border: "none" }}
+                  src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Yangale%20Tole%20(Classics%20Projects)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </Paper>
           </Grid.Col>
         </Grid>
       </Container>

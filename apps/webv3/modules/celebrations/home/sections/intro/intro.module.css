@@ -1,0 +1,14 @@
+.root {
+  position: relative;
+}
+
+.flower_container {
+  position: absolute;
+  left: -5rem;
+  top: 10rem;
+  transition: 0.1s linear;
+}
+
+.flower_container svg {
+  stroke: var(--color-celebrations-primary-500);
+}

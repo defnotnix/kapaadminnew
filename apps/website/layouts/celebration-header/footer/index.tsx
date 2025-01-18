@@ -330,7 +330,7 @@ export function LayoutCelebrationsFooter() {
                         We create, you{"    "}
                         <span
                           style={{
-                            fontFamily: "Wind Song",
+                            fontFamily:"var(--font-cursive)",
                             fontSize: "3rem",
                             display: "inline-block",
                             marginLeft: "0.5rem",

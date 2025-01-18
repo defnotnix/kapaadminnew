@@ -8,9 +8,12 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { Sections } from "./sections";
 import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "../../../../../packages/core/src/helpers";
+import { useCelebrationContext } from "@/layouts/celebrations";
 
 export function ModuleCelebrationsAbout() {
   // * DEFINITION
+
+  const { setPageLoading } = useCelebrationContext();
 
   // * CONTEXT
 
@@ -22,7 +25,7 @@ export function ModuleCelebrationsAbout() {
     queryKey: ["celebrations", "home"],
     queryFn: async () => {
       const res: any = await apiDispatch.get({ url: "/cms/content/" });
-      console.log(res);
+      setPageLoading(false);
       return res.data;
     },
     initialData: [],

@@ -35,6 +35,8 @@ import {
 } from "@phosphor-icons/react";
 //motion
 import { MotionLilyLeaf } from "@/assets/svg/hero.flower";
+import { useCelebrationContext } from "@/layouts/celebrations";
+import { useEffect } from "react";
 
 export function ModuleCelebrationsContact({
   sectionData = {
@@ -48,6 +50,14 @@ export function ModuleCelebrationsContact({
   },
 }: any) {
   const { subheading, heading, paragraph, image } = sectionData;
+  const { setPageLoading } = useCelebrationContext();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPageLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <>
       <Container py={200}>
@@ -77,6 +87,21 @@ export function ModuleCelebrationsContact({
               </motion.div>
 
               <motion.div
+                variants={variantGeneralDelay(0.4)}
+                initial="initial"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+              >
+                <Stack gap="sm" my="xs">
+                  <Text size="xs" opacity={0.5}>
+                    PARKING LOCATION
+                  </Text>
+
+                  <Text size="xs">The Classics Projects Building,</Text>
+                </Stack>
+              </motion.div>
+
+              <motion.div
                 variants={variantGeneralDelay(0.5)}
                 initial="initial"
                 whileInView="visible"
@@ -89,6 +114,77 @@ export function ModuleCelebrationsContact({
 
                   <Text size="xs">+977 9801464626</Text>
                   <Text size="xs">classics.projects@gmail.com</Text>
+                </Stack>
+              </motion.div>
+
+              <motion.div
+                variants={variantGeneralDelay(0.5)}
+                initial="initial"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+              >
+                <Stack gap="sm" my="xs">
+                  <Text size="xs" opacity={0.5}>
+                    OPENING HOURS
+                  </Text>
+
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Sunday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      7:00 - 16:00
+                    </Text>
+                  </Group>
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Monday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      7:00 - 16:00
+                    </Text>
+                  </Group>
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Tuesday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      7:00 - 16:00
+                    </Text>
+                  </Group>
+
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Wednesday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      7:00 - 16:00
+                    </Text>
+                  </Group>
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Thursday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      7:00 - 16:00
+                    </Text>
+                  </Group>
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Friday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      7:00 - 16:00
+                    </Text>
+                  </Group>
+                  <Group>
+                    <Text size="xs" w={100}>
+                      Saturday
+                    </Text>
+                    <Text size="xs" w={100}>
+                      Closed
+                    </Text>
+                  </Group>
                 </Stack>
               </motion.div>
             </Stack>
@@ -185,6 +281,28 @@ export function ModuleCelebrationsContact({
                       {paragraph[index]}
                     </motion.div>
                   ))}
+
+                  <Paper p="4px" withBorder radius="xl">
+                    <div
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        borderRadius: "24px",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <iframe
+                        title="Classics Projects Location"
+                        style={{
+                          width: "100%",
+                          height: "500px",
+                          border: "none",
+                        }}
+                        src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Yangale%20Tole%20(Classics%20Projects)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </Paper>
 
                   <Stack py={"xl"}>
                     <motion.div

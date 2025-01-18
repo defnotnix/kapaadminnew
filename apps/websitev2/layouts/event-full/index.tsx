@@ -15,7 +15,7 @@ import {
 } from "@mantine/core";
 
 import imgLogo from "@/assets/images/brand/events.png";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEventContext } from "../event";
 import { useWindowScroll } from "@mantine/hooks";
 
@@ -26,6 +26,7 @@ export function LayoutEventsFull({ children }: { children: React.ReactNode }) {
   const { navStatus, navOpen, navClose, navToggle } = useEventContext();
 
   const Pathname = usePathname();
+  const Router = useRouter();
 
   const Header = () => {
     const [scroll, scrollTo] = useWindowScroll();
@@ -54,17 +55,23 @@ export function LayoutEventsFull({ children }: { children: React.ReactNode }) {
               <Grid.Col span={{ base: 8, lg: 5 }}>
                 <Group wrap="nowrap">
                   <Image h={40} w={40} src={imgLogo.src} />
-                  <Text
-                    size="xs"
-                    fw={600}
-                    lh=".9rem"
-                    c={Pathname == "/events" && !navStatus ? "gray.0" : ""}
+                  <Group
+                    onClick={() => {
+                      Router.push("/celebrations");
+                    }}
                   >
-                    The Classics
-                    <br />
-                    Event
-                  </Text>
-                  {Pathname !== "/events" && (
+                    <Text
+                      size="xs"
+                      fw={600}
+                      lh=".9rem"
+                      c={Pathname == "/events" && !navStatus ? "gray.0" : ""}
+                    >
+                      The Classics
+                      <br />
+                      Event
+                    </Text>
+                  </Group>
+                  {true && (
                     <>
                       <Text size="md" visibleFrom="lg">
                         *
@@ -75,7 +82,13 @@ export function LayoutEventsFull({ children }: { children: React.ReactNode }) {
                         opacity={0.5}
                         fw={600}
                         lh=".9rem"
-                        c={Pathname == "/events" ? "gray.0" : ""}
+                        c={
+                          navStatus || scroll.y > 200
+                            ? "dark.9"
+                            : Pathname == "/events"
+                              ? "gray.0"
+                              : ""
+                        }
                       >
                         We plan, produce, coordinate, design,
                         <br /> style, promote and live for a good party.
@@ -92,12 +105,15 @@ export function LayoutEventsFull({ children }: { children: React.ReactNode }) {
                     px="xl"
                     color="var(--color-events-primary-500)"
                     visibleFrom="lg"
+                    onClick={() => {
+                      Router.push("/events/contact");
+                    }}
                   >
                     Get in touch
                   </Button>
                   <Burger
                     color={
-                      navStatus
+                      navStatus || scroll.y > 200
                         ? "dark.9"
                         : Pathname == "/events"
                           ? "gray.0"
@@ -120,8 +136,12 @@ export function LayoutEventsFull({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       {children}
-      <SectionContact />
-      <LayoutEventsFooter />
+      {Pathname !== "/events/events" && (
+        <>
+          <SectionContact />
+          <LayoutEventsFooter />
+        </>
+      )}
       <BranchNav />
     </>
   );

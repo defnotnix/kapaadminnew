@@ -275,15 +275,6 @@ export function _SectionHero({ sectionData }: { sectionData: any }) {
             </Grid.Col>
           </Grid>
         </Container>
-
-        <Group pos="fixed" bottom={16} right={16} gap={4}>
-          <Button color="dark" variant="outline">
-            <ArrowArcLeft />
-          </Button>
-          <Button color="dark">
-            <Play />
-          </Button>
-        </Group>
       </section>
     </>
   );

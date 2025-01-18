@@ -24,7 +24,7 @@ const services = [
   {
     url: "",
     label: "Engagements",
-    img: "https://images.prismic.io/marie-guillaume/0d66603d-b934-443d-8d71-36c52fc06eb9_Coralie-et-Alexandre-Marrakech-05.jpg?fm=webp&w=900&q=auto",
+    img: "https://images.unsplash.com/photo-1637870996864-65dc1c00f4dc?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     color: "var(--mantine-color-teal-2)",
   },
   {
@@ -43,7 +43,7 @@ const services = [
   {
     url: "",
     label: "Private Events",
-    img: "ohttps://images.prismic.io/marie-guillaume/6b0b1b87-1573-4486-95a5-2c6ae1ada9c5_Coralie-et-Alexandre-Marrakech-10.jpg?fm=webp&w=500&q=auto",
+    img: "https://images.prismic.io/marie-guillaume/6b0b1b87-1573-4486-95a5-2c6ae1ada9c5_Coralie-et-Alexandre-Marrakech-10.jpg?fm=webp&w=500&q=auto",
     color: "var(--mantine-color-sky-2)",
   },
   {
@@ -111,7 +111,7 @@ export function _Section() {
         <motion.div
           style={{
             position: "absolute",
-            top: "calc(50% - 300px)",
+            top: `calc(50% - ${500 - (5-index) * 75}px)`,
             right: 0,
           }}
           initial={{
@@ -134,11 +134,7 @@ export function _Section() {
           }}
         >
           <Paper p="4px" pb="md" shadow="xl">
-            <Image
-              h={600}
-              w={500}
-              src="https://images.pexels.com/photos/26558732/pexels-photo-26558732/free-photo-of-the-bride-and-groom-walking-between-the-guests-holding-sparklers.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            />
+            <Image h={600} w={500} src={service.img} />
           </Paper>
         </motion.div>
       </Box>

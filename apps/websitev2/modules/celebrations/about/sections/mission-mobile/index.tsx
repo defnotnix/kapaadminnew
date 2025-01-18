@@ -120,7 +120,7 @@ export function _SectionMissionMobile({ sectionData }: any) {
                           ta="center"
                           size="xl"
                           style={{
-                            fontFamily: "WindSong",
+                            fontFamily:"var(--font-cursive)",
                           }}
                         >
                           {events[index]?.detailed_quote}

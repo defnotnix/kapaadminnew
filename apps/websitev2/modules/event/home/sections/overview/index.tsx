@@ -199,7 +199,7 @@ export function _SectionOverview({ sectionData }: any) {
                 >
                   <Image
                     radius="lg"
-                    h={{ base: 300, lg: 500 }}
+                    h={{ base: 150, lg: 250 }}
                     fit="cover"
                     src={bot.images[0]?.image}
                     style={{

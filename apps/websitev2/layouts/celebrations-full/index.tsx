@@ -17,7 +17,7 @@ import {
 } from "@mantine/core";
 
 import imgLogo from "@/assets/images/brand/celebrations.png";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { BranchNav } from "./components/branchnav";
 
@@ -30,6 +30,7 @@ export function LayoutCelebrationsFull({
 }) {
   const { navStatus, navOpen, navClose, navToggle } = useCelebrationContext();
 
+  const Router = useRouter();
   const Pathname = usePathname();
 
   const Header = () => {
@@ -43,17 +44,17 @@ export function LayoutCelebrationsFull({
             width: "100vw",
             top: 0,
             position: "fixed",
-            background: "rgba(249 207 209,0)",
+            background: "rgba(251, 229, 229,0)",
             backdropFilter: "blur(0px)",
             left: 0,
           }}
           initial={{
-            background: "rgba(249 207 209,0)",
+            background: "rgba(251, 229, 229,0)",
           }}
           animate={
             scroll.y > 200
               ? {
-                  background: "rgba(249 207 209,.3)",
+                  background: "rgba(251, 229, 229,.1)",
                   backdropFilter: "blur(16px)",
                 }
               : {}
@@ -63,20 +64,30 @@ export function LayoutCelebrationsFull({
             <Grid>
               <Grid.Col span={{ base: 8, lg: 5 }}>
                 <Group wrap="nowrap">
-                  <Image h={40} w={40} src={imgLogo.src} />
-                  <Text
-                    size="xs"
-                    fw={600}
-                    lh=".9rem"
-                    c={
-                      Pathname == "/celebrations" && !navStatus ? "gray.0" : ""
-                    }
+                  <Group
+                    onClick={() => {
+                      Router.push("/celebrations");
+                    }}
                   >
-                    The Classics
-                    <br />
-                    Celebration
-                  </Text>
-                  {Pathname !== "/celebrations" && (
+                    <Image h={40} w={40} src={imgLogo.src} />
+                    <Text
+                      size="xs"
+                      fw={600}
+                      lh=".9rem"
+                      c={
+                        navStatus || scroll.y > 200
+                          ? "dark.9"
+                          : Pathname == "/celebrations"
+                            ? "gray.0"
+                            : ""
+                      }
+                    >
+                      The Classics
+                      <br />
+                      Celebration
+                    </Text>
+                  </Group>
+                  {true && (
                     <>
                       <Text visibleFrom="lg" size="md">
                         *
@@ -84,10 +95,16 @@ export function LayoutCelebrationsFull({
                       <Text
                         visibleFrom="lg"
                         size="xs"
-                        opacity={0.5}
+                        opacity={0.8}
                         fw={600}
                         lh=".9rem"
-                        c={Pathname == "/celebrations" ? "gray.0" : ""}
+                        c={
+                          navStatus || scroll.y > 200
+                            ? "dark.9"
+                            : Pathname == "/celebrations"
+                              ? "gray.0"
+                              : ""
+                        }
                       >
                         We plan, produce, coordinate, design,
                         <br /> style, promote and live for a good party.
@@ -104,12 +121,15 @@ export function LayoutCelebrationsFull({
                     px="xl"
                     color="var(--color-celebrations-primary-500)"
                     visibleFrom="lg"
+                    onClick={() => {
+                      Router.push("/celebrations/contact");
+                    }}
                   >
                     Get in touch
                   </Button>
                   <Burger
                     color={
-                      navStatus
+                      navStatus || scroll.y > 200
                         ? "dark.9"
                         : Pathname == "/celebrations"
                           ? "gray.0"
@@ -133,9 +153,13 @@ export function LayoutCelebrationsFull({
       <Header />
       {children}
 
-      <SectionContact />
+      {Pathname !== "/celebrations/events" && (
+        <>
+          <SectionContact />
 
-      <LayoutCelebrationsFooter />
+          <LayoutCelebrationsFooter />
+        </>
+      )}
 
       <BranchNav />
     </>

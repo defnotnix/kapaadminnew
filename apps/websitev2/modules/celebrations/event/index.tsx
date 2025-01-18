@@ -36,6 +36,7 @@ import { AnimatedText } from "@/components/AnimatedText";
 import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
 import { useRouter } from "next/navigation";
+import { useCelebrationContext } from "@/layouts/celebrations";
 
 const projects: any[] = [
   {
@@ -93,6 +94,7 @@ export function ModuleCelebrationsEvents() {
 
   const [active, setActive] = useState(0);
   const [showText, setShowText] = useState(false);
+  const { setPageLoading } = useCelebrationContext();
 
   // * CONTEXT
 
@@ -115,7 +117,7 @@ export function ModuleCelebrationsEvents() {
           })
       );
 
-      console.log(newdata);
+      setPageLoading(false);
 
       return newdata;
     },
@@ -603,7 +605,7 @@ export function ModuleCelebrationsEvents() {
                   fw={600}
                   rightSection={<ArrowUpRight />}
                   onClick={() => {
-                    Router.push("/events/events/" + data[active]?.id);
+                    Router.push("/celebrations/events/" + data[active]?.id);
                   }}
                 >
                   View full details

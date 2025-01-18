@@ -7,9 +7,12 @@ import type { InferGetStaticPropsType, GetStaticProps } from "next";
 import { Sections } from "./sections";
 import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "../../../../../packages/core/src/helpers";
+import { useEventContext } from "@/layouts/event";
 
 export function ModuleEventsAbout() {
   // * DEFINITION
+
+  const { setPageLoading } = useEventContext();
 
   // * CONTEXT
 
@@ -21,7 +24,7 @@ export function ModuleEventsAbout() {
     queryKey: ["events", "home"],
     queryFn: async () => {
       const res: any = await apiDispatch.get({ url: "/cms/content/" });
-      console.log(res);
+      setPageLoading(false);
       return res.data;
     },
     initialData: [],

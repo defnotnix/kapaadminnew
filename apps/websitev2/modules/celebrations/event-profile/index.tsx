@@ -25,9 +25,11 @@ import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
 
 import { useParams } from "next/navigation";
+import { useCelebrationContext } from "@/layouts/celebrations";
 
 export function ModuleCelebrationEventProfile() {
   const Params = useParams();
+  const { setPageLoading } = useCelebrationContext();
 
   const { data, isFetching } = useQuery({
     queryKey: ["events", "events"],
@@ -50,11 +52,7 @@ export function ModuleCelebrationEventProfile() {
         },
       });
 
-      console.log({
-        ...res.data,
-        images: imgData.data,
-        video: vidData.data,
-      });
+      setPageLoading(false);
 
       return {
         ...res.data,
@@ -206,7 +204,7 @@ export function ModuleCelebrationEventProfile() {
         </Title>
 
         <Container size="lg">
-          <SimpleGrid cols={{ base: 1, lg: 3 }} py={100}>
+          {/* <SimpleGrid cols={{ base: 1, lg: 3 }} py={100}>
             <motion.div
               variants={variantGeneralDelay(0.1)}
               initial="initial"
@@ -275,7 +273,7 @@ export function ModuleCelebrationEventProfile() {
                 </Text>
               </Paper>
             </motion.div>
-          </SimpleGrid>
+          </SimpleGrid> */}
 
           <SimpleGrid cols={2}>
             <Stack key={1}>
@@ -299,7 +297,7 @@ export function ModuleCelebrationEventProfile() {
             </Stack>
           </SimpleGrid>
 
-          <Grid visibleFrom="lg">
+          {/* <Grid visibleFrom="lg">
             <Grid.Col span={8}>
               <motion.div
                 variants={variantGeneralDelay(0.1)}
@@ -396,7 +394,7 @@ export function ModuleCelebrationEventProfile() {
                 </Paper>
               </motion.div>
             </Grid.Col>
-          </Grid>
+          </Grid> */}
         </Container>
       </section>
 

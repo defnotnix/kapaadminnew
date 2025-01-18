@@ -1,6 +1,16 @@
+// @ts-nocheck
+
 "use client";
 
-import { Anchor, Center, Group, Space, Stack, Title } from "@mantine/core";
+import {
+  Anchor,
+  Center,
+  Group,
+  Space,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
 import { usePathname } from "next/navigation";
 
 import classes from "./navdrawer.module.css";
@@ -64,7 +74,7 @@ export function LayoutEventNavDrawer({ open, close }: any) {
           {navlinks.map((navlink, index) => (
             <Title
               style={{
-                fontFamily: "Made Mirage",
+                fontFamily: "var(--font-events-heading)",
               }}
               key={index}
               size="5rem"
@@ -85,7 +95,7 @@ export function LayoutEventNavDrawer({ open, close }: any) {
           {navlinks.map((navlink, index) => (
             <Title
               style={{
-                fontFamily: "Made Mirage",
+                fontFamily: "var(--font-events-heading)",
               }}
               key={index}
               size="3rem"
@@ -103,6 +113,9 @@ export function LayoutEventNavDrawer({ open, close }: any) {
         </Stack>
 
         <div className={classes.socials}>
+          <Text ta="center" size="xs" opacity={0.3}>
+            Follow us on social media
+          </Text>
           <Group pb="xl" justify="center">
             {socialLinks.map((socialLink, index) => (
               <motion.div

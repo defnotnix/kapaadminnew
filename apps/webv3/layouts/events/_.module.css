@@ -1,0 +1,109 @@
+.root {
+  background: var(--color-events-primary-100);
+  min-height: 100vh;
+  transition: 0.5s ease-in-out;
+}
+
+.loader_container {
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 999;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    45deg,
+    var(--color-events-primary-100),
+    var(--color-events-primary-200),
+    var(--color-events-primary-300)
+  );
+  background-size: 600% 600%;
+  animation: backgroundRotate 15s ease infinite;
+}
+
+.loader_content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.root {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--color-events-primary-100);
+}
+
+.header {
+  position: absolute;
+  width: 100vw;
+  padding-top: 2rem;
+  z-index: 999;
+}
+
+.branchnav {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+.mainbtn {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(24px);
+  anchor-name: --btn;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.hoverCard {
+  position-anchor: --btn;
+  position: absolute;
+  left: -150px;
+  top: -250px;
+  border-radius: 1500px;
+  z-index: 9;
+  background: none;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+@keyframes backgroundRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.loader_container {
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 999;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    45deg,
+    var(--color-events-primary-100),
+    var(--color-events-primary-200),
+    var(--color-events-primary-300)
+  );
+  background-size: 600% 600%;
+  animation: backgroundRotate 15s ease infinite;
+}
+
+.loader_content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}

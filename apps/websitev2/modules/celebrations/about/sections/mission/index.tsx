@@ -186,7 +186,7 @@ export function _SectionMission({ sectionData }: any) {
                 ta="center"
                 size="xl"
                 style={{
-                  fontFamily: "WindSong",
+                  fontFamily:"var(--font-cursive)",
                 }}
               >
                 {events[active]?.detailed_quote}

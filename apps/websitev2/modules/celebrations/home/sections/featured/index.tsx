@@ -43,12 +43,6 @@ export function _Section({ events = [] }: { events: any[] }) {
 
   // * FUNCTIONS
 
-  useEffect(() => {
-    if (inViewport && background !== "var(--color-celebrations-primary-200)") {
-      setBackground("var(--color-celebrations-primary-200)");
-    }
-  }, [inViewport]);
-
   // * COMPONENTS
 
   return (
@@ -58,6 +52,7 @@ export function _Section({ events = [] }: { events: any[] }) {
         viewport={{ once: true }}
         style={{
           position: "relative",
+          background: "var(--color-celebrations-primary-200)",
         }}
       >
         <Container

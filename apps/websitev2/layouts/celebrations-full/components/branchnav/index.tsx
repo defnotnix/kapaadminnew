@@ -86,13 +86,13 @@ export function BranchNav() {
                     key={index}
                   >
                     <Box
-                      p="md"
+                      px="4px"
                       onClick={() => {
                         Router.push(item.url);
                         toggle();
                       }}
                     >
-                      <Image h={64} w={64} src={item.image} />
+                      <Image p="xs" h={64} w={64} src={item.image} />
                     </Box>
                   </motion.div>
                 ))}
@@ -107,9 +107,10 @@ export function BranchNav() {
           animate={{ y: 0, opacity: 1 }}
         >
           <Paper
+            className={classes.branchnav}
             onClick={toggle}
-            p="md"
-            radius="xl"
+            p="4px"
+            radius="999"
             bg="rgba(255,255,255,.5)"
             style={{
               backdropFilter: "blur(24px)",

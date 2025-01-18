@@ -24,8 +24,12 @@ import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
 
 import { useParams } from "next/navigation";
+import { useEventContext } from "@/layouts/event";
 
 export function ModuleEventEventProfile() {
+
+  const { setPageLoading } = useEventContext();
+
   const Params = useParams();
 
   const { data, isFetching } = useQuery({
@@ -49,11 +53,7 @@ export function ModuleEventEventProfile() {
         },
       });
 
-      console.log({
-        ...res.data,
-        images: imgData.data,
-        video: vidData.data,
-      });
+      setPageLoading(false);
 
       return {
         ...res.data,

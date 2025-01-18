@@ -3,13 +3,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { SectionsEvents } from "./sections";
 import { apiDispatch } from "@vsphere/core";
+import { useEventContext } from "@/layouts/event";
 
 export function ModuleEventsHome() {
+  const { setPageLoading } = useEventContext();
+
   const { data, isFetching } = useQuery({
     queryKey: ["celebrations", "home"],
     queryFn: async () => {
       const res: any = await apiDispatch.get({ url: "/cms/content/" });
-      console.log(res);
+      setPageLoading(false);
       return res.data;
     },
     initialData: [],
@@ -29,7 +32,7 @@ export function ModuleEventsHome() {
     queryKey: ["celebrations", "events"],
     queryFn: async () => {
       const res: any = await apiDispatch.get({ url: "/events/info/" });
-      console.log(res);
+
       return res.data;
     },
     initialData: [],
@@ -41,7 +44,7 @@ export function ModuleEventsHome() {
       const _textData = JSON.parse(_data.text);
 
       const _eventData = data.filter((item: any) => {
-        return [10, 11, 12].includes(item.id);
+        return [44, 45, 46].includes(item.id);
       });
 
       return {
@@ -181,7 +184,10 @@ export function ModuleEventsHome() {
       <SectionsEvents.Featured events={queryEvents.data} />
       <SectionsEvents.Overview sectionData={getOverviewData()} />
       <SectionsEvents.Services />
-      <SectionsEvents.Testimonials testimonials={queryTestimonial.data} />
+      <SectionsEvents.Testimonials
+        testimonials={queryTestimonial.data}
+        clients={getClientsData()}
+      />
     </>
   );
 }

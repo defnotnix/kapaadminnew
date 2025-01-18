@@ -1,0 +1,101 @@
+.top_1 {
+  background: white;
+
+  --r: 10px; /* the radius */
+  --s: 20px; /* the size of the corner*/
+  margin-top: -10px;
+
+  border-radius: var(--r);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(
+      #000 70%,
+      #0000 72%
+    ) no-repeat;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  mask: right 0 bottom calc(var(--s) + var(--r)) var(--_m),
+    right calc(var(--s) + var(--r)) bottom 0 var(--_m),
+    radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 101%)
+      calc(-1 * var(--r)) calc(-1 * var(--r)) no-repeat,
+    conic-gradient(
+      from 90deg at calc(100% - var(--s) - 2 * var(--r))
+        calc(100% - var(--s) - 2 * var(--r)),
+      #0000 25%,
+      #000 0
+    );
+}
+
+.top_2 {
+  background: white;
+
+  --r: 10px; /* the radius */
+  --s: 20px; /* the size of the corner*/
+  margin-top: -10px;
+
+  border-radius: var(--r);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(
+      #000 70%,
+      #0000 72%
+    ) no-repeat;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  mask: calc(var(--s) + var(--r)) bottom var(--_m),
+    bottom calc(var(--s) + var(--r)) left 0 var(--_m),
+    radial-gradient(var(--s) at 0 100%, #0000 99%, #000 101%) var(--r)
+      calc(-1 * var(--r)) no-repeat,
+    conic-gradient(
+      from 180deg at calc(var(--s) + 2 * var(--r))
+        calc(100% - var(--s) - 2 * var(--r)),
+      #0000 25%,
+      #000 0
+    );
+}
+
+.bot_1 {
+  background: white;
+
+  --r: 10px; /* the radius */
+  --s: 20px; /* the size of the corner*/
+  margin-bottom: -10px;
+
+  border-radius: var(--r);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(
+      #000 70%,
+      #0000 72%
+    ) no-repeat;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  mask: right calc(var(--s) + var(--r)) top 0 var(--_m),
+    right calc(var(--s) + var(--r)) var(--_m),
+    radial-gradient(var(--s) at 100% 0, #0000 99%, #000 101%)
+      calc(-1 * var(--r)) var(--r) no-repeat,
+    conic-gradient(
+      at calc(100% - var(--s) - 2 * var(--r)) calc(var(--s) + 2 * var(--r)),
+      #0000 25%,
+      #000 0
+    );
+}
+
+.bot_2 {
+  background: white;
+
+  --r: 10px; /* the radius */
+  --s: 20px; /* the size of the corner*/
+  margin-bottom: -10px;
+
+  border-radius: var(--r);
+  --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(
+      #000 70%,
+      #0000 72%
+    ) no-repeat;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  mask: calc(var(--s) + var(--r)) 0 var(--_m),
+    0 calc(var(--s) + var(--r)) var(--_m),
+    radial-gradient(var(--s) at 0 0, #0000 99%, #000 101%) var(--r) var(--r)
+      no-repeat,
+    conic-gradient(
+      at calc(var(--s) + 2 * var(--r)) calc(var(--s) + 2 * var(--r)),
+      #000 75%,
+      #0000 0
+    );
+}

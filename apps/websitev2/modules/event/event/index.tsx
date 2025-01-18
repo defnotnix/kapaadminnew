@@ -37,6 +37,8 @@ import { useQuery } from "@tanstack/react-query";
 import { apiDispatch } from "@vsphere/core";
 import { useRouter } from "next/navigation";
 
+import { useEventContext } from "@/layouts/event";
+
 const projects = [
   {
     background: "#BDCCFF",
@@ -51,6 +53,7 @@ export function ModuleEventsEvents() {
   // * DEFINITION
 
   const Router = useRouter();
+  const { setPageLoading } = useEventContext();
 
   const [active, setActive] = useState(0);
   const [showText, setShowText] = useState(false);
@@ -75,7 +78,7 @@ export function ModuleEventsEvents() {
           })
       );
 
-      console.log(newdata);
+      setPageLoading(false);
 
       return newdata;
     },

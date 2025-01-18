@@ -59,8 +59,11 @@
   --color-celebrations-primary-900: #74282a;
   --color-celebrations-primary-950: #3e1112;
 
-  --font-celebrations-heading: "Castoro",
-    serif /* Classics Events */ --color-events-primary-50: #f5f8fa;
+  --font-celebrations-heading: "Castoro", serif;
+
+  /* Classics Events */
+
+  --color-events-primary-50: #f5f8fa;
   --color-events-primary-100: #eaeff3;
   --color-events-primary-200: #d2dee5;
   --color-events-primary-300: #aac1cf;
@@ -72,7 +75,7 @@
   --color-events-primary-900: #2f404b;
   --color-events-primary-950: #1f2932;
 
-  --font-events-heading: "Castoro", serif;
+  --font-events-heading: "Sora", serif;
 }
 
 body {
@@ -413,6 +416,12 @@ body {
     0.211% 2.511%,
     0.168% 2.97%
   );
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .text-capitals {

@@ -19,11 +19,7 @@ import {
 import cx from "clsx";
 import classes from "./entry.module.css";
 //images
-import imgLogoCelebration from "@/assets/images/brand/celebrations.png";
-import imgLogoEvents from "@/assets/images/brand/events.png";
-import imgLogoSocieties from "@/assets/images/brand/societies.png";
-import imgLogoCreations from "@/assets/images/brand/creations.png";
-import imgMain from "@/assets/images/brand/theclassics.png";
+
 //motion
 import { AnimatePresence, motion, useTime } from "framer-motion";
 import { useRouter } from "next/navigation";
@@ -40,7 +36,8 @@ const branches = [
     description: "Celebrations with your loved ones",
     quote: "For your cherished moments",
     url: "/celebrations",
-    image: imgLogoCelebration,
+    image:
+      "https://vdocs.classicsprojects.com.np/media/profile/celebrations.png",
     background: "var(--color-celebrations-cream)",
   },
   {
@@ -49,7 +46,7 @@ const branches = [
     description: "Memorable events to cherish forever",
     quote: "For Your Public and Corporate Events",
     url: "/events",
-    image: imgLogoEvents,
+    image: "https://vdocs.classicsprojects.com.np/media/profile/events.png",
     background: "var(--mantine-color-brand-0)",
   },
   {
@@ -58,7 +55,7 @@ const branches = [
     description: "Connecting communities worldwide",
     quote: "For Unique Event Goods & Décor",
     url: "/societies",
-    image: imgLogoSocieties,
+    image: "https://vdocs.classicsprojects.com.np/media/profile/societies.png",
     background: "var(--mantine-color-sky-3)",
   },
   {
@@ -66,8 +63,8 @@ const branches = [
     label: "Creations",
     description: "Innovative designs and masterpieces",
     quote: "For Meaningful Social Causes",
-    url: "/creative",
-    image: imgLogoCreations,
+    url: "/creations",
+    image: "https://vdocs.classicsprojects.com.np/media/profile/creations.png",
   },
 ];
 
@@ -122,7 +119,7 @@ export function ModuleEntry() {
           <Text size="xs"></Text>
           <Stack>
             <Center h={100}>
-              <Image src={company.image.src} h={100} />
+              <Image src={company.image} h={100} w={100} />
             </Center>
 
             <Stack gap={0}>
@@ -149,6 +146,7 @@ export function ModuleEntry() {
               size="xs"
               fw={600}
               className={classes.branchQuote}
+              tt="capitalize"
             >
               {company.quote}
             </Text>
@@ -210,7 +208,7 @@ export function ModuleEntry() {
     return (
       <Stack key={index}>
         <Center h={100}>
-          <Image src={company.image.src} h={50} />
+          <Image src={company.image} h={50} w={50} />
         </Center>
 
         <Stack gap={0}>
@@ -272,7 +270,17 @@ export function ModuleEntry() {
                           : "var(--mantine-color-gray-3)",
                     }}
                   >
-                    <Center>{index == 4 && <Image src={imgMain.src} />}</Center>
+                    <Center h={160}>
+                      {index == 4 && (
+                        <Image
+                          w={100}
+                          h={100}
+                          src={
+                            "https://vdocs.classicsprojects.com.np/media/profile/theclassics.png"
+                          }
+                        />
+                      )}
+                    </Center>
                   </Paper>
                 </motion.div>
               ))}
@@ -346,7 +354,12 @@ export function ModuleEntry() {
             >
               <Stack pt="xl">
                 <Center>
-                  <Image h={50} src={imgMain.src} />
+                  <Image
+                    h={50}
+                    src={
+                      "https://vdocs.classicsprojects.com.np/media/profile/theclassics.png"
+                    }
+                  />
                 </Center>
                 <Text
                   fw={600}
@@ -366,7 +379,7 @@ export function ModuleEntry() {
                   <Text
                     size="2.7rem"
                     style={{
-                      fontFamily: "WindSong",
+                      fontFamily:"var(--font-cursive)",
                     }}
                   >
                     celebrate
@@ -378,7 +391,7 @@ export function ModuleEntry() {
                   <Text
                     size="1.5rem"
                     style={{
-                      fontFamily: "WindSong",
+                      fontFamily:"var(--font-cursive)",
                     }}
                   >
                     celebrate

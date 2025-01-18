@@ -356,7 +356,7 @@ export function _Section({ sectionData }: any) {
                     ta="center"
                     size="xl"
                     style={{
-                      fontFamily: "WindSong",
+                      fontFamily:"var(--font-cursive)",
                     }}
                   >
                     {phases[active]?.detailed_quote}
@@ -722,7 +722,7 @@ export function _Section({ sectionData }: any) {
                     ta="center"
                     size="xl"
                     style={{
-                      fontFamily: "WindSong",
+                      fontFamily:"var(--font-cursive)",
                     }}
                   >
                     {phases[active]?.detailed_quote}
