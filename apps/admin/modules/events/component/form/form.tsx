@@ -47,18 +47,6 @@ export function _Form() {
     initialData: [],
   });
 
-  const queryCategory = useQuery({
-    queryKey: ["admin", "event-category"],
-    queryFn: async () => {
-      const res = await getRecords({
-        endpoint: configModuleEventCategory.endpoint,
-      });
-      console.log(res);
-      return res;
-    },
-    initialData: [],
-  });
-
   // * FUNCTIONS
 
   // * COMPONENTS
@@ -117,23 +105,6 @@ export function _Form() {
               description="Type of the Event"
               placeholder="Select Category"
               {...form.getInputProps("company")}
-            />
-            <Select
-              disabled={!form.getValues().company}
-              data={queryCategory?.data
-                ?.filter((e: any) => {
-                  return e.company == form.getValues().company;
-                })
-                .map((item: any) => {
-                  return {
-                    value: String(item.id),
-                    label: item.name,
-                  };
-                })}
-              label="Event Category"
-              description="Type of the Event"
-              placeholder="Select Category"
-              {...form.getInputProps("event_category")}
             />
           </SimpleGrid>
 

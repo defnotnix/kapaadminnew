@@ -40,22 +40,17 @@ export function _Edit() {
 
       return res;
     },
+    initialData: {},
   });
 
   const RenderFormLayout = () => {
     const form = FormHandler.useForm();
 
-    console.log({
-      ...data,
-      event_category: String(data.event_category?.id),
-      event_date: new Date(data.event_date),
-    });
-
     useEffect(() => {
       form.setValues({
         ...data,
-        event_category: String(data.event_category?.id),
-        event_date: new Date(data.event_date),
+
+        event_date: new Date(data.event_date || ""),
       });
     }, []);
 

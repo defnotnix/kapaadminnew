@@ -16,7 +16,7 @@ export const columns = [
     title: "Event Date",
     sortable: true,
     render: ({ event_date }: any) => (
-      <Text>{new Date(event_date).toLocaleDateString()}</Text>
+      <Text size="xs">{new Date(event_date).toLocaleDateString()}</Text>
     ),
   },
   {
@@ -24,7 +24,7 @@ export const columns = [
     title: "Event Category",
     sortable: true,
     render: ({ event_category }: any) => (
-      <Text>{event_category?.name || "N/A"}</Text>
+      <Text size="xs">{event_category?.name || "N/A"}</Text>
     ), // Adjust based on how event_category is structured.
   },
   {
