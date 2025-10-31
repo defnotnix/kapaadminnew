@@ -6,7 +6,7 @@ import axios, {
   InternalAxiosRequestConfig,
 } from "axios";
 
-const AUTH_SCHEME = "MakotaAllahuAkhbar "; // keep as-is (or switch to "Bearer " if your backend expects it)
+const AUTH_SCHEME = "Congobongo"; // keep as-is (or switch to "Bearer " if your backend expects it)
 const ACCESS_KEY = "sswtoken";
 
 function getAccessToken(): string | null {
