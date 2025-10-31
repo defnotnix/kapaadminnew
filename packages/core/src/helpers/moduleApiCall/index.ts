@@ -1,119 +1,180 @@
-// apiClient.ts
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  InternalAxiosRequestConfig,
-} from "axios";
+import axios from "axios";
+import { get, post, patch, del } from "../apiDispatch";
+//apis
 
-const AUTH_SCHEME = "Congobongo"; // keep as-is (or switch to "Bearer " if your backend expects it)
-const ACCESS_KEY = "sswtoken";
-
-function getAccessToken(): string | null {
-  return sessionStorage.getItem(ACCESS_KEY);
-}
-
-function setAccessToken(token?: string | null) {
-  if (!token) return;
-  sessionStorage.setItem(ACCESS_KEY, token);
-}
-
-// Create a single axios instance for the whole app
-const api: AxiosInstance = axios.create({
-  // baseURL: "/api", // uncomment/set if you use a base path
-  withCredentials: false,
-  timeout: 30_000,
-});
-
-// ----- Request interceptor: attach Authorization -----
-api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const token = getAccessToken();
-  if (token) {
-    config.headers = config.headers ?? {};
-    // Only set Authorization if caller did not override it explicitly
-    if (!config.headers["Authorization"]) {
-      config.headers["Authorization"] = AUTH_SCHEME + token;
-    }
-  }
-  return config;
-});
-
-// ----- Refresh: single-flight promise so we never spam the server -----
-let refreshPromise: Promise<string | null> | null = null;
-
-async function refreshToken(): Promise<string | null> {
-  if (!refreshPromise) {
-    const token = getAccessToken();
-    refreshPromise = axios
-      .post(
-        "/authenticate/refresh/token/",
-        {},
-        {
-          headers: { Authorization: AUTH_SCHEME + (token ?? "") },
-        }
-      )
-      .then((res) => {
-        // Accept token from header or body—support both, be flexible
-        const headerToken =
-          (res.headers?.["xauthorization"] as string | undefined) ||
-          (res.headers?.["XAuthorization"] as string | undefined);
-        const bodyToken =
-          (res.data?.access as string | undefined) ||
-          (res.data?.token as string | undefined);
-        const newToken = headerToken ?? bodyToken ?? null;
-
-        if (newToken) setAccessToken(newToken);
-        return newToken;
-      })
-      .catch(() => null)
-      .finally(() => {
-        // allow new refresh attempts later
-        refreshPromise = null;
-      });
-  }
-  return refreshPromise;
-}
-
-// Helper: decide if this error looks like an "expired token" situation
-function isAuthExpiredError(error: AxiosError): boolean {
-  const status = error.response?.status;
-  if (status === 401) return true; // canonical
-  // Fallbacks if backend uses 403 + detail, etc.
-  const detail =
-    (error.response?.data as any)?.detail ||
-    (error.response?.data as any)?.message ||
-    (error.response?.data as any)?.error;
-  if (typeof detail === "string" && /expired|invalid|token/i.test(detail)) {
-    return true;
-  }
-  return false;
-}
-
-// ----- Response interceptor: auto-refresh then retry once -----
-api.interceptors.response.use(
-  (res) => res,
-  async (error: AxiosError) => {
-    const original = error.config as
-      | (AxiosRequestConfig & { _retry?: boolean })
-      | undefined;
-    if (!original) throw error;
-
-    const alreadyTried = original._retry === true;
-
-    if (isAuthExpiredError(error) && !alreadyTried) {
-      original._retry = true;
-      const newToken = await refreshToken();
-
-      if (newToken) {
-        original.headers = original.headers ?? {};
-        original.headers["Authorization"] = AUTH_SCHEME + newToken;
-        return api(original); // retry with fresh token
+async function handleTokenExpiry() {
+  const res = await axios
+    .post(
+      "/authenticate/refresh/token/",
+      {},
+      {
+        headers: {
+          Authorization: "Congobongo " + sessionStorage.getItem("sswtoken"),
+        },
       }
+    )
+    .then((e) => {
+      console.log(e);
+      sessionStorage.setItem("sswtoken", e?.headers?.xauthorization);
+      return true;
+    })
+    .catch((err) => {
+      console.log(err);
+      return false;
+    });
+
+  console.log("Token Expired, Calling Refresh Token");
+
+  return res;
+}
+
+async function getRecords({
+  endpoint,
+  searchValue = "",
+  page,
+  pageSize,
+  params,
+  ...props
+}: {
+  endpoint: string;
+  searchValue?: string;
+  page?: number;
+  pageSize?: number;
+  params?: any;
+}) {
+  const res: any = await get({
+    url: endpoint,
+    params: params,
+  });
+  return res.err ? [] : res.data;
+}
+
+async function getSingleRecord(endpoint: string, id: any): Promise<any> {
+  try {
+    const res: any = await get({
+      url: endpoint + id + "/",
+    });
+    return res.err ? [] : res.data;
+  } catch (error: any) {
+    let err: any = new Error("Error");
+
+    if (error?.response?.data?.detail == "Access Token Expired") {
+      const res = await handleTokenExpiry();
+
+      if (res) {
+        return await getSingleRecord(endpoint, id);
+      } else {
+        throw err;
+      }
+    } else {
+      err.object = error;
+      throw err;
     }
-
-    // If we’re here, either not an auth error, or refresh failed, or already retried.
-    throw error;
   }
-);
+}
 
-export default api;
+async function createRecord(endpoint: string, body: any): Promise<any> {
+  const isFormData = body instanceof FormData;
+  console.log(isFormData);
+
+  try {
+    return await post({
+      url: endpoint,
+      body: body,
+      headers: isFormData
+        ? {}
+        : {
+            "Content-Type": "application/json",
+          },
+    });
+  } catch (error: any) {
+    let err: any = new Error("Error");
+
+    if (error?.response?.data?.detail == "Access Token Expired") {
+      const res = await handleTokenExpiry();
+
+      if (res) {
+        return await createRecord(endpoint, body);
+      } else {
+        throw err;
+      }
+    } else {
+      err.object = error;
+      throw err;
+    }
+  }
+}
+
+// async function createJSONRecord(endpoint: string, body: any): Promise<any> {
+//   return await post({
+//     url: endpoint,
+//     body: body,
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// }
+
+async function editRecord(endpoint: string, body: any, id: any): Promise<any> {
+  const isFormData = body instanceof FormData;
+
+  try {
+    return await patch({
+      url: endpoint + id + "/",
+      body: body,
+      headers: isFormData
+        ? {}
+        : {
+            "Content-Type": "application/json",
+          },
+    });
+  } catch (error: any) {
+    let err: any = new Error("Error");
+
+    if (error?.response?.data?.detail == "Access Token Expired") {
+      const res = await handleTokenExpiry();
+
+      if (res) {
+        return await editRecord(endpoint, body, id);
+      } else {
+        throw err;
+      }
+    } else {
+      err.object = error;
+      throw err;
+    }
+  }
+}
+
+async function deleteRecord(endpoint: string, body: any): Promise<any> {
+  try {
+    return await del({
+      url: endpoint,
+      id: body,
+    });
+  } catch (error: any) {
+    let err: any = new Error("Error");
+
+    if (error?.response?.data?.detail == "Access Token Expired") {
+      const res = await handleTokenExpiry();
+
+      if (res) {
+        return await deleteRecord(endpoint, body);
+      } else {
+        throw err;
+      }
+    } else {
+      err.object = error;
+      throw err;
+    }
+  }
+}
+
+export const moduleApiCall = {
+  getRecords,
+  getSingleRecord,
+  createRecord,
+  editRecord,
+  deleteRecord,
+  //   createJSONRecord,
+};
