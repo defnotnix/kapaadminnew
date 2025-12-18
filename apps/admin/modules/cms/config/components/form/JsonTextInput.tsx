@@ -11,7 +11,7 @@ import {
   Box,
   Alert,
 } from "@mantine/core";
-import { IconTrash, IconPlus } from "@tabler/icons-react";
+import { Trash, Plus } from "@phosphor-icons/react";
 
 interface JsonTextInputProps {
   value: string;
@@ -29,7 +29,6 @@ export function JsonTextInput({
   value,
   onChange,
   label = "Text",
-  placeholder = "JSON data will be shown as key-value pairs",
 }: JsonTextInputProps) {
   const [pairs, setPairs] = useState<KeyValuePair[]>([]);
   const [error, setError] = useState<string>("");
@@ -153,14 +152,14 @@ export function JsonTextInput({
               onClick={() => handleRemovePair(index)}
               variant="light"
             >
-              <IconTrash size={16} />
+              <Trash size={16} />
             </ActionIcon>
           </Group>
         ))}
 
         <Button
           variant="light"
-          leftSection={<IconPlus size={16} />}
+          leftSection={<Plus size={16} />}
           onClick={handleAddPair}
           fullWidth
         >
