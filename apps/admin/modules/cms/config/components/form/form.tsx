@@ -26,6 +26,7 @@ import { getRecords } from "@/modules/company/module.api";
 import { configModule } from "@/modules/company/module.config";
 import { useQuery } from "@tanstack/react-query";
 import { ImageUpload } from "@vsphere/ui";
+import { JsonTextInput } from "./JsonTextInput";
 
 const daysOfWeek = [
   "Sunday",
@@ -77,7 +78,11 @@ export function _Form() {
           />
 
           <TextInput label="Youtube Link" {...form.getInputProps("link")} />
-          <TextInput label="Text" {...form.getInputProps("text")} />
+          <JsonTextInput
+            {...form.getInputProps("text")}
+            label="Text"
+            placeholder="JSON data will be shown as key-value pairs"
+          />
           <TextInput label="Caption" {...form.getInputProps("caption")} />
           <TextInput
             label="Meta-Keyphrase"
