@@ -14,7 +14,7 @@ import {
 import { Trash, Plus } from "@phosphor-icons/react";
 
 interface JsonTextInputProps {
-  value: string;
+  value: string | object;
   onChange: (value: string) => void;
   label?: string;
   placeholder?: string;
@@ -37,12 +37,23 @@ export function JsonTextInput({
   useEffect(() => {
     try {
       setError("");
-      if (!value || value.trim() === "") {
+      if (!value) {
         setPairs([]);
         return;
       }
 
-      const parsed = JSON.parse(value);
+      let parsed: any;
+
+      // Handle both string and object inputs
+      if (typeof value === "string") {
+        if (value.trim() === "") {
+          setPairs([]);
+          return;
+        }
+        parsed = JSON.parse(value);
+      } else {
+        parsed = value;
+      }
 
       if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
         setError("Value must be a JSON object");
